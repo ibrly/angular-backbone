@@ -1,0 +1,6 @@
+<h1>Ng If</h1>
+<p *ngIf="condition;else no">if works!</p>
+<button (click)="setCondition() ">Toggle</button>
+<ng-template #no>
+  <p>ng-template works!</p>
+</ng-template>
