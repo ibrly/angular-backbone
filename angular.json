@@ -107,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "angular-backbone"
+  "defaultProject": "angular-backbone",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
