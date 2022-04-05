@@ -1,0 +1,19 @@
+<div><a [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
+  <span>Basics</span>
+</a>
+  <a routerLinkActive="active" [routerLink]="['/dom/1']" [queryParams]="{get:2}" [fragment]="'section'"
+     class="nav-link">
+    <span>Dom {{dt}}</span>
+  </a>
+  <a routerLinkActive="active" [routerLink]="['/communicate']" class="nav-link">
+    <span>Communicate</span>
+  </a>
+  <a routerLinkActive="active" [routerLink]="['/l-c-hooks']" class="nav-link">
+    <span>Life cycle hooks</span>
+  </a><a routerLinkActive="active" [routerLink]="['/forms']" class="nav-link">
+    <span>Forms</span>
+  </a>
+  <button (click)="goTo()" class="nav-link">go to basics Programmatically</button>
+  <button (click)="goToFragQParams()" class="nav-link">go to basics Programmatically With Fragments and Query Params
+  </button>
+</div>
