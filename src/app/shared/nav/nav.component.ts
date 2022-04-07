@@ -13,7 +13,6 @@ export class NavComponent implements OnInit {
   dt: string | undefined;
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.params)
   }
 
 

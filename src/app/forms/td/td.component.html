@@ -1,9 +1,26 @@
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-  <input #first_name="ngModel" type="text" required ngModel name="first_name">
-  <br>
-  <p *ngIf="f.controls['first_name']!.errors!['required']  && first_name.touched">please Enter Valid First Name</p>
-  <input #last_name="ngModel" type="text" required ngModel name="last_name">
-  <p *ngIf="!last_name.valid &&last_name.touched">please Enter Valid Last Name</p>
+  <p *ngIf="!userData.valid&&userData.touched">User Data Is Invalid</p>
+  <div ngModelGroup="userData" #userData="ngModelGroup"><input #first_name="ngModel" type="text" required
+                                                               [(ngModel)]="binding" name="first_name">
+    <br>
+    <p
+      *ngIf="first_name.errors?.['required']&& first_name.touched">
+      First Name is required
+    </p>
+    <span>two way bind {{binding}}</span><br>
+    <input #last_name="ngModel" type="text" required ngModel name="last_name">
+    <p
+      *ngIf="last_name.errors?.['required']&& last_name.touched">
+      Last Name is required
+    </p></div>
+  <div class="radio" *ngFor="let gender of genders">
+    <label>
+      <input type="radio" name="gender" [ngModel]="'Male'" [value]="gender">
+      {{gender}}
+    </label>
+  </div>
   <br>
   <input type="submit" value="submit">
+  <button type="button" (click)="fill()">Fill</button>
+  <button type="button" (click)="patch()">Change Last Name</button>
 </form>
