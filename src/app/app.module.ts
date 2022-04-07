@@ -35,6 +35,7 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {TdComponent} from './forms/td/td.component';
 import {ReactiveComponent} from './forms/reactive/reactive.component';
 import {FormsComponent} from './pages/forms/forms.component';
+import { PipesComponent } from './pipes/pipes.component';
 
 // @ts-ignore
 @NgModule({
@@ -66,6 +67,7 @@ import {FormsComponent} from './pages/forms/forms.component';
     TdComponent,
     ReactiveComponent,
     FormsComponent,
+    PipesComponent,
   ],
   imports: [
     BrowserModule,
