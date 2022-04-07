@@ -1,5 +1,28 @@
-<form>
-  <input type="text">
-  <input type="text">
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+  <div formGroupName="userData">
+    <input type="text"
+           formControlName="first_name">
+    <p
+      *ngIf="signupForm.get('userData.first_name')?.errors?.['required']&& signupForm.get('userData.first_name')?.touched">
+      Last Name is required</p>
+    <br>
+    <input type="text" formControlName="last_name">
+    <p
+      *ngIf="signupForm.get('userData.last_name')?.errors?.['required']&& signupForm.get('userData.last_name')?.touched">
+      Last Name is required</p>
+  </div>
+  <div class="radio" *ngFor="let gender of genders; let i = index">
+    <label>
+      <input type="radio" formControlName="gender" [value]="gender">
+      {{gender}}
+    </label>
+  </div>
+  <br>
+  <div formArrayName="hobbies"><h3>your hobbies</h3>
+    <div *ngFor="let hobbyControl of getControls(); let i = index">
+      <input type="text" [formControlName]="i"></div>
+    <button type="button" (click)="onAddHobby()">Add Hobby</button>
+  </div>
   <input type="submit" value="submit">
 </form>

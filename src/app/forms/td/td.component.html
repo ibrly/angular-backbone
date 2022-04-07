@@ -13,7 +13,7 @@
       *ngIf="last_name.errors?.['required']&& last_name.touched">
       Last Name is required
     </p></div>
-  <div class="radio" *ngFor="let gender of genders">
+  <div class="radio" *ngFor="let gender of genders; let i = index">
     <label>
       <input type="radio" name="gender" [ngModel]="'Male'" [value]="gender">
       {{gender}}
