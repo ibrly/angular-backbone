@@ -1,3 +1,11 @@
-form{
+form {
   margin-top: 10px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+p {
+  color: red;
 }

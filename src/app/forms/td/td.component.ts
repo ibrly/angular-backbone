@@ -37,5 +37,6 @@ export class TdComponent implements OnInit {
     if (form.valid) {
       console.log('you submitted value:', form.value);
       form.reset();
-    }}
+    }
+  }
 }
