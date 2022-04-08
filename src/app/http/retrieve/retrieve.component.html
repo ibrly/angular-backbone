@@ -1,0 +1,7 @@
+<p>retrieve works!</p>
+<div *ngFor="let meetUp of meetups">
+  <h2>{{meetUp.attributes.title}}</h2>
+  <p>{{meetUp.attributes.description}}</p>
+  <p>{{meetUp.attributes.address}}</p>
+  <img [src]="meetUp.attributes.image" alt="">
+</div>

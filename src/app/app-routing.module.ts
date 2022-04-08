@@ -6,6 +6,8 @@ import {DomComponent} from "./pages/dom/dom.component";
 import {LifecycleHooksComponent} from "./lifecycle-hooks/lifecycle-hooks.component";
 import {NotFoundComponent} from "./shared/not-found/not-found.component";
 import {FormsComponent} from "./pages/forms/forms.component";
+import {PipesComponent} from "./pipes/pipes.component";
+import {HttpComponent} from "./http/http.component";
 
 const routes: Routes = [{
   path: '', redirectTo: 'home', pathMatch: 'full'
@@ -25,13 +27,19 @@ const routes: Routes = [{
 }, {
   path: 'l-c-hooks',
   component: LifecycleHooksComponent
+}, {
+  path: 'forms',
+  component: FormsComponent
+}, {
+  path: 'pipes',
+  component: PipesComponent
+}, {
+  path: 'http',
+  component: HttpComponent
 },
   {
     path: 'not-found',
     component: NotFoundComponent
-  }, {
-    path: 'forms',
-    component: FormsComponent
   },
   {path: '**', redirectTo: 'not-found'}];
 

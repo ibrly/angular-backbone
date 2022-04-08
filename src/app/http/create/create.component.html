@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+  <input ngModel type="text" required
+         name="title">
+  <br>
+  <input type="text" required ngModel name="description">
+  <input type="text" required ngModel name="address">
+  <input type="text" required ngModel name="image">
+  <br>
+  <input type="submit" value="submit">
+
+</form>
