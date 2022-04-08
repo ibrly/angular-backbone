@@ -1,4 +1,8 @@
-<div *ngIf="meetUp"><h2>{{meetUp.attributes.title}}</h2>
+<div *ngIf="meetUp">
+  <h2>{{meetUp.attributes.title}}</h2>
   <p>{{meetUp.attributes.description}}</p>
   <p>{{meetUp.attributes.address}}</p>
-  <img [src]="meetUp.attributes.image" alt=""></div>
+  <img [src]="meetUp.attributes.image" alt="">
+  <button>Update</button>
+
+</div>
