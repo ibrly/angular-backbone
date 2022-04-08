@@ -19,5 +19,13 @@ export class RetrieveComponent implements OnInit {
     });
   }
 
+  onDelete(id: number) {
+    this.http.deleteMeetup(id).subscribe(data => {
+      this.http.retrieveMeetups().subscribe(data => {
+        this.meetups = data;
+      });
+    });
+  }
+
 
 }

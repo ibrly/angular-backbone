@@ -8,6 +8,7 @@ import {NotFoundComponent} from "./shared/not-found/not-found.component";
 import {FormsComponent} from "./pages/forms/forms.component";
 import {PipesComponent} from "./pipes/pipes.component";
 import {HttpComponent} from "./http/http.component";
+import {RetrieveOneComponent} from "./http/retrieve-one/retrieve-one.component";
 
 const routes: Routes = [{
   path: '', redirectTo: 'home', pathMatch: 'full'
@@ -36,6 +37,9 @@ const routes: Routes = [{
 }, {
   path: 'http',
   component: HttpComponent
+}, {
+  path: 'http/:id',
+  component: RetrieveOneComponent
 },
   {
     path: 'not-found',
