@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-pipes',
@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pipes.component.scss']
 })
 export class PipesComponent implements OnInit {
+  name: string = 'Angular';
+  today: Date = new Date();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

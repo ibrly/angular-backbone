@@ -35,7 +35,14 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {TdComponent} from './forms/td/td.component';
 import {ReactiveComponent} from './forms/reactive/reactive.component';
 import {FormsComponent} from './pages/forms/forms.component';
-import { PipesComponent } from './pipes/pipes.component';
+import {PipesComponent} from './pipes/pipes.component';
+import {PipePipe} from './pipes/pipe.pipe';
+import {HttpComponent} from './http/http.component';
+import {HttpClientModule} from "@angular/common/http";
+import {CreateComponent} from './http/create/create.component';
+import {RetrieveComponent} from './http/retrieve/retrieve.component';
+
+import {RetrieveOneComponent} from './http/retrieve-one/retrieve-one.component';
 
 // @ts-ignore
 @NgModule({
@@ -68,6 +75,11 @@ import { PipesComponent } from './pipes/pipes.component';
     ReactiveComponent,
     FormsComponent,
     PipesComponent,
+    PipePipe,
+    HttpComponent,
+    CreateComponent,
+    RetrieveComponent,
+    RetrieveOneComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +88,7 @@ import { PipesComponent } from './pipes/pipes.component';
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(), HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
