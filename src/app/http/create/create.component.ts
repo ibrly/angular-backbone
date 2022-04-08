@@ -18,11 +18,14 @@ export class CreateComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const {title, description, address, image} = form.value
-    this.http.CreateMeetup({
+    this.http.createMeetup({
       title,
       description,
       address,
       image
-    });
+    }).subscribe(data => {
+      console.log(data
+      )
+    })
   }
 }

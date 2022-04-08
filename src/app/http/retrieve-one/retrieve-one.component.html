@@ -1,1 +1,4 @@
-<p>retrieve-one works!</p>
+<div *ngIf="meetUp"><h2>{{meetUp.attributes.title}}</h2>
+  <p>{{meetUp.attributes.description}}</p>
+  <p>{{meetUp.attributes.address}}</p>
+  <img [src]="meetUp.attributes.image" alt=""></div>
