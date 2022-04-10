@@ -9,6 +9,8 @@ import {FormsComponent} from "./pages/forms/forms.component";
 import {PipesComponent} from "./pipes/pipes.component";
 import {HttpComponent} from "./http/http.component";
 import {RetrieveOneComponent} from "./http/retrieve-one/retrieve-one.component";
+import {ModalComponent} from "./dynamic/modal/modal.component";
+import {ParentComponent} from "./dynamic/parent/parent.component";
 
 const routes: Routes = [{
   path: '', redirectTo: 'home', pathMatch: 'full'
@@ -34,6 +36,9 @@ const routes: Routes = [{
 }, {
   path: 'pipes',
   component: PipesComponent
+}, {
+  path: 'dynamic',
+  component: ParentComponent
 }, {
   path: 'http',
   component: HttpComponent
