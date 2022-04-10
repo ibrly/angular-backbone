@@ -1,5 +1,6 @@
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-
+  <h1 *ngIf="loading">Loading</h1>
+  <h1 *ngIf="error" class="error">{{error}}</h1>
   <input ngModel type="text" required
          name="title">
   <br>

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {map} from "rxjs";
 
 @Injectable({
@@ -16,7 +16,7 @@ export class HttpService {
     }))
   }
 
-  retrieveMeetup(id: string | null) {
+  retrieveMeetup(id: string) {
     return this.http.get<any>(`https://backbonebk.inteligencia.co.uk/api/meetups/${id}`)
   }
 
@@ -25,8 +25,9 @@ export class HttpService {
     return this.http.post('https://backbonebk.inteligencia.co.uk/api/meetups', {data: postData})
   }
 
-  UpdateMeetup(postData: { title: string; description: string, address: string, image: string }, id: number) {
-    return this.http.put(`https://backbonebk.inteligencia.co.uk/api/meetups/${id}`, {data: postData})
+  updateMeetup(postData: { title: string; description: string, address: string, image: string }, id: number) {
+    return this.http.put<any>(`https://backbonebk.inteligencia.co.uk/api/meetups/${id}`, {data: postData},
+    )
   }
 
   deleteMeetup(id: number) {
