@@ -1,4 +1,5 @@
 <p>retrieve works!</p>
+<h1 *ngIf="loading">Loading</h1>
 <div *ngFor="let meetUp of meetups">
   <h2>{{meetUp.attributes.title}}</h2>
   <p>{{meetUp.attributes.description}}</p>
