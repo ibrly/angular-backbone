@@ -43,6 +43,9 @@ import {CreateComponent} from './http/create/create.component';
 import {RetrieveComponent} from './http/retrieve/retrieve.component';
 
 import {RetrieveOneComponent} from './http/retrieve-one/retrieve-one.component';
+import { PlaceholderDirective } from './dynamic/placeholder.directive';
+import { ModalComponent } from './dynamic/modal/modal.component';
+import { ParentComponent } from './dynamic/parent/parent.component';
 
 // @ts-ignore
 @NgModule({
@@ -80,6 +83,9 @@ import {RetrieveOneComponent} from './http/retrieve-one/retrieve-one.component';
     CreateComponent,
     RetrieveComponent,
     RetrieveOneComponent,
+    PlaceholderDirective,
+    ModalComponent,
+    ParentComponent,
   ],
   imports: [
     BrowserModule,
