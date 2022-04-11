@@ -5,6 +5,7 @@ import {AttrDirDirective} from "./attr-dir.directive";
 import {DomComponent} from "../pages/dom/dom.component";
 import {RouterModule} from "@angular/router";
 import {SharedModule} from "../shared/shared.module";
+import {DomRoutingModule} from "./dom-routing.module";
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {SharedModule} from "../shared/shared.module";
     DomComponent,
   ],
   imports: [
-    SharedModule
+    SharedModule,
+    DomRoutingModule
   ]
 })
 export class DomModule {

@@ -1,10 +1,9 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {TdComponent} from "./td/td.component";
 import {ReactiveComponent} from "./reactive/reactive.component";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FormsComponent} from "../pages/forms/forms.component";
 import {SharedModule} from "../shared/shared.module";
+import {FormsRoutingModule} from "./forms-routing.module";
 
 
 @NgModule({
@@ -17,7 +16,8 @@ import {SharedModule} from "../shared/shared.module";
   ],
   imports: [
     SharedModule,
-    ]
+    FormsRoutingModule
+  ]
 })
 export class NgFormsModule {
 }

@@ -4,6 +4,7 @@ import {PlaceholderDirective} from "./placeholder.directive";
 import {ModalComponent} from "./modal/modal.component";
 import {ParentComponent} from "./parent/parent.component";
 import {SharedModule} from "../shared/shared.module";
+import {DynamicRoutingModule} from "./dynamic-routing.module";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {SharedModule} from "../shared/shared.module";
     ModalComponent,
     ParentComponent],
   imports: [
-    SharedModule
+    SharedModule,
+    DynamicRoutingModule
   ]
 })
 export class DynamicModule {

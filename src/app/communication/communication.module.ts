@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {CEventsBindingComponent} from "./c-events-binding/c-events-binding.component";
 import {ChildoComponent} from "./c-events-binding/childo/childo.component";
 import {NgContentComponent} from "./ng-content/ng-content.component";
@@ -8,17 +7,21 @@ import {PropertiesBindingComponent} from "./properties-binding/properties-bindin
 import {ChildComponent} from "./properties-binding/child/child.component";
 import {CommunicationComponent} from "../pages/communication/communication.component";
 import {SharedModule} from "../shared/shared.module";
+import {CommunicationRoutingModule} from "./communication-routing.module";
 
 
 @NgModule({
-  declarations: [CEventsBindingComponent,
+  declarations: [
+    CEventsBindingComponent,
     ChildoComponent,
     NgContentComponent,
     ContentchildComponent,
     CommunicationComponent,
     PropertiesBindingComponent,
-    ChildComponent],
-  exports: [CEventsBindingComponent,
+    ChildComponent
+  ],
+  exports: [
+    CEventsBindingComponent,
     CommunicationComponent,
     ChildoComponent,
     NgContentComponent,
@@ -26,7 +29,8 @@ import {SharedModule} from "../shared/shared.module";
     PropertiesBindingComponent,
     ChildComponent],
   imports: [
-    SharedModule
+    SharedModule,
+    CommunicationRoutingModule
   ]
 })
 export class CommunicationModule {
