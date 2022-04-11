@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {CommunicationComponent} from "../pages/communication/communication.component";
 
 const routes: Routes = [{
-  path: 'communicate',
+  path: '',
   component: CommunicationComponent
 },
 ];

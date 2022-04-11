@@ -4,7 +4,7 @@ import {PipesComponent} from "./pipes.component";
 
 const routes: Routes = [
   {
-    path: 'pipes',
+    path: '',
     component: PipesComponent
   }];
 

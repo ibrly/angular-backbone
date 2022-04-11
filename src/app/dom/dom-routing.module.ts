@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {DomComponent} from "../pages/dom/dom.component";
 
 const routes: Routes = [{
-  path: 'dom/:id',
+  path: '',
   component: DomComponent,
 }];
 

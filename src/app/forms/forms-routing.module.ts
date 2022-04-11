@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {FormsComponent} from "../pages/forms/forms.component";
 
 const routes: Routes = [{
-  path: 'forms',
+  path: '',
   component: FormsComponent
 }];
 
