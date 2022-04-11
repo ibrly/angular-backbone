@@ -7,6 +7,7 @@ import {ContentchildComponent} from "./ngContent/contentchild/contentchild.compo
 import {PropertiesBindingComponent} from "./properties-binding/properties-binding.component";
 import {ChildComponent} from "./properties-binding/child/child.component";
 import {CommunicationComponent} from "../pages/communication/communication.component";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import {CommunicationComponent} from "../pages/communication/communication.compo
     PropertiesBindingComponent,
     ChildComponent],
   imports: [
-    CommonModule
+    SharedModule
   ]
 })
 export class CommunicationModule {

@@ -10,6 +10,7 @@ import {StyleComponent} from "./directives/style/style.component";
 import {SwitchComponent} from "./directives/switch/switch.component";
 import {FormsModule} from "@angular/forms";
 import {HomeComponent} from "../pages/home/home.component";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -23,8 +24,8 @@ import {HomeComponent} from "../pages/home/home.component";
     StyleComponent,
     SwitchComponent],
   imports: [
-    CommonModule,
-    FormsModule
+    SharedModule,
+
   ], exports: [HomeComponent,
     ComponentComponent,
     InlineComponentComponent,

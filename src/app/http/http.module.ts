@@ -6,6 +6,7 @@ import {RetrieveComponent} from "./retrieve/retrieve.component";
 import {RetrieveOneComponent} from "./retrieve-one/retrieve-one.component";
 import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -20,9 +21,8 @@ import {FormsModule} from "@angular/forms";
     RetrieveOneComponent,
   ],
   imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule
+    SharedModule,
+
   ]
 })
 export class HttpModule {
