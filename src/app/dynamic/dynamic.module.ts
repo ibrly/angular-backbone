@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {PlaceholderDirective} from "./placeholder.directive";
 import {ModalComponent} from "./modal/modal.component";
 import {ParentComponent} from "./parent/parent.component";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -13,7 +14,7 @@ import {ParentComponent} from "./parent/parent.component";
     ModalComponent,
     ParentComponent],
   imports: [
-    CommonModule
+    SharedModule
   ]
 })
 export class DynamicModule {

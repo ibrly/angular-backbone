@@ -21,14 +21,12 @@ import {HttpModule} from "./http/http.module";
 import {LifecycleHooksModule} from "./lifecycle-hooks/lifecycle-hooks.module";
 import {PipesModule} from "./pipes/pipes.module";
 import {NgFormsModule} from "./forms/forms.module";
+import {SharedModule} from "./shared/shared.module";
 
 // @ts-ignore
 @NgModule({
   declarations: [
-    AppComponent,
-    NavComponent,
-    NotFoundComponent,
-  ],
+    AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -45,7 +43,8 @@ import {NgFormsModule} from "./forms/forms.module";
     LifecycleHooksModule,
     PipesModule,
     NgFormsModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
