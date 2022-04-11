@@ -4,11 +4,11 @@ import {HttpComponent} from "./http.component";
 import {RetrieveOneComponent} from "./retrieve-one/retrieve-one.component";
 
 const routes: Routes = [{
-  path: 'http',
+  path: '',
   component: HttpComponent
 },
   {
-    path: 'http/:id',
+    path: ':id',
     component: RetrieveOneComponent
   }];
 

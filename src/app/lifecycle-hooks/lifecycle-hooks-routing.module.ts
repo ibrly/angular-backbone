@@ -4,7 +4,7 @@ import {LifecycleHooksComponent} from "./lifecycle-hooks.component";
 
 const routes: Routes = [
   {
-    path: 'l-c-hooks',
+    path: '',
     component: LifecycleHooksComponent
   }];
 

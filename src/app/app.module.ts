@@ -9,18 +9,9 @@ import {environment} from '../environments/environment';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {HttpClientModule} from "@angular/common/http";
-import {BasicsModule} from "./basics/basics.module";
-import {CommunicationModule} from "./communication/communication.module";
-import {DomModule} from "./dom/dom.module";
-import {DynamicModule} from "./dynamic/dynamic.module";
-import {HttpModule} from "./http/http.module";
-import {LifecycleHooksModule} from "./lifecycle-hooks/lifecycle-hooks.module";
-import {PipesModule} from "./pipes/pipes.module";
-import {NgFormsModule} from "./forms/forms.module";
-import {SharedModule} from "./shared/shared.module";
-import {BasicsRoutingModule} from "./basics/basics-routing.module";
 
-// @ts-ignore
+import {SharedModule} from "./shared/shared.module";
+
 @NgModule({
   declarations: [
     AppComponent],
@@ -32,14 +23,6 @@ import {BasicsRoutingModule} from "./basics/basics-routing.module";
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
     HttpClientModule,
-    BasicsModule,
-    CommunicationModule,
-    DomModule,
-    DynamicModule,
-    HttpModule,
-    LifecycleHooksModule,
-    PipesModule,
-    NgFormsModule,
     FormsModule,
     SharedModule,
   ],
