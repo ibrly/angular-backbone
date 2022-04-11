@@ -18,6 +18,7 @@ import {LifecycleHooksModule} from "./lifecycle-hooks/lifecycle-hooks.module";
 import {PipesModule} from "./pipes/pipes.module";
 import {NgFormsModule} from "./forms/forms.module";
 import {SharedModule} from "./shared/shared.module";
+import {BasicsRoutingModule} from "./basics/basics-routing.module";
 
 // @ts-ignore
 @NgModule({
@@ -40,7 +41,7 @@ import {SharedModule} from "./shared/shared.module";
     PipesModule,
     NgFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
