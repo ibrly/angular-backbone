@@ -6,6 +6,7 @@ import {NgContentComponent} from "./ng-content/ng-content.component";
 import {ContentchildComponent} from "./ngContent/contentchild/contentchild.component";
 import {PropertiesBindingComponent} from "./properties-binding/properties-binding.component";
 import {ChildComponent} from "./properties-binding/child/child.component";
+import {CommunicationComponent} from "../pages/communication/communication.component";
 
 
 @NgModule({
@@ -13,9 +14,11 @@ import {ChildComponent} from "./properties-binding/child/child.component";
     ChildoComponent,
     NgContentComponent,
     ContentchildComponent,
+    CommunicationComponent,
     PropertiesBindingComponent,
     ChildComponent],
   exports: [CEventsBindingComponent,
+    CommunicationComponent,
     ChildoComponent,
     NgContentComponent,
     ContentchildComponent,

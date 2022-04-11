@@ -9,10 +9,12 @@ import {IfComponent} from "./directives/if/if.component";
 import {StyleComponent} from "./directives/style/style.component";
 import {SwitchComponent} from "./directives/switch/switch.component";
 import {FormsModule} from "@angular/forms";
+import {HomeComponent} from "../pages/home/home.component";
 
 
 @NgModule({
   declarations: [ComponentComponent,
+    HomeComponent,
     InlineComponentComponent,
     DataBindingComponent,
     ClassComponent,
@@ -23,7 +25,8 @@ import {FormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     FormsModule
-  ], exports: [ComponentComponent,
+  ], exports: [HomeComponent,
+    ComponentComponent,
     InlineComponentComponent,
     DataBindingComponent,
     ClassComponent,
