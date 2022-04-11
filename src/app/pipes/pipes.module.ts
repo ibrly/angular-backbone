@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {PipesComponent} from "./pipes.component";
 import {PipePipe} from "./pipe.pipe";
 import {SharedModule} from "../shared/shared.module";
+import {PipesRoutingModule} from "./pipes-routing.module";
 
 
 @NgModule({
@@ -11,7 +11,8 @@ import {SharedModule} from "../shared/shared.module";
   exports: [PipesComponent,
     PipePipe],
   imports: [
-    SharedModule
+    SharedModule,
+    PipesRoutingModule
   ]
 })
 export class PipesModule {

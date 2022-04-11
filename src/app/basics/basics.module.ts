@@ -11,6 +11,7 @@ import {SwitchComponent} from "./directives/switch/switch.component";
 import {FormsModule} from "@angular/forms";
 import {HomeComponent} from "../pages/home/home.component";
 import {SharedModule} from "../shared/shared.module";
+import {BasicsRoutingModule} from "./basics-routing.module";
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import {SharedModule} from "../shared/shared.module";
     SwitchComponent],
   imports: [
     SharedModule,
-
+    BasicsRoutingModule
   ], exports: [HomeComponent,
     ComponentComponent,
     InlineComponentComponent,

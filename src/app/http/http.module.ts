@@ -7,6 +7,7 @@ import {RetrieveOneComponent} from "./retrieve-one/retrieve-one.component";
 import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {SharedModule} from "../shared/shared.module";
+import {HttpRoutingModule} from "./http-routing.module";
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import {SharedModule} from "../shared/shared.module";
   ],
   imports: [
     SharedModule,
-
+    HttpRoutingModule
   ]
 })
 export class HttpModule {
