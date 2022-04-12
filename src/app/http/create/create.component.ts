@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {HttpService} from "../http.service";
 import {Subject} from "rxjs";
+import {State} from "../../store/reducers";
+import {Store} from "@ngrx/store";
+import {startCreateMeetup} from "../../store/reducers/meetup/actions/meetups.actions";
 
 @Component({
   selector: 'app-create',
@@ -10,9 +13,9 @@ import {Subject} from "rxjs";
 })
 export class CreateComponent implements OnInit {
   loading: boolean = false;
-  error:string;
+  error: string;
 
-  constructor(private http: HttpService) {
+  constructor(private store: Store<State>, private http: HttpService) {
   }
 
   ngOnInit(): void {
@@ -22,18 +25,13 @@ export class CreateComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.loading = true;
     const {title, description, address, image} = form.value
-    this.http.createMeetup({
+    let meetup = {
       title,
       description,
       address,
       image
-    }).subscribe(data => {
-      this.loading = false;
-      console.log(data
-      )
-    }, error => {
-      this.loading = false;
-      this.error = error.error.error.message
-    })
+    }
+    this.store.dispatch(startCreateMeetup({meetup}))
+
   }
 }
