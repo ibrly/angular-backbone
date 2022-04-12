@@ -18,8 +18,7 @@ import {CommunicationRoutingModule} from "./communication-routing.module";
     ContentchildComponent,
     CommunicationComponent,
     PropertiesBindingComponent,
-    ChildComponent
-  ],
+    ChildComponent],
   exports: [
     CEventsBindingComponent,
     CommunicationComponent,
