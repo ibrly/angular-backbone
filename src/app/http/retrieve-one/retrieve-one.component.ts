@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {State} from "../../store/reducers";
-import {startRetrieveMeetup} from "../../store/reducers/meetup/actions/meetups.actions";
+import {startRetrieveMeetup, startUpdateMeetup} from "../../store/reducers/meetup/actions/meetups.actions";
 
 @Component({
   selector: 'app-retrieve-one',
@@ -13,27 +13,27 @@ export class RetrieveOneComponent implements OnInit {
   loading: boolean = true;
   meetUp: any;
   update: boolean = false;
+  id: string;
 
   constructor(private store: Store<State>, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      this.id = params['id'];
       this.store.dispatch(startRetrieveMeetup({meetupId: params['id']}));
     });
     this.store.select('meetups').subscribe(state => {
       this.loading = false;
-      this.meetUp = state.meetup;
+      this.meetUp = {...state.meetup.attributes};
     });
   }
 
   updateMeetUp() {
     this.loading = true;
-    /*   this.http.updateMeetup(this.meetUp.attributes, this.meetUp.id).subscribe(data => {
-         this.meetUp = data['data'];
-         this.update = false;
-         this.loading = false;
-       })*/
+    this.store.dispatch(startUpdateMeetup({meetupId: this.id, meetup: this.meetUp}));
+    this.loading = false;
+    this.update = false;
   }
 
 
