@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpService} from "../http.service";
 import {Store} from "@ngrx/store";
-import {startRetrieveMeetups} from "../../store/reducers/meetup/actions/meetups.actions";
+import {startDeleteMeetup, startRetrieveMeetups} from "../../store/reducers/meetup/actions/meetups.actions";
 import {State} from "../../store/reducers";
 
 @Component({
@@ -26,13 +26,6 @@ export class RetrieveComponent implements OnInit {
 
   onDelete(id: number) {
     this.loading = true;
-    this.http.deleteMeetup(id).subscribe(data => {
-      this.http.retrieveMeetups().subscribe(data => {
-        this.loading = false;
-        this.meetups = data;
-      });
-    });
+    this.store.dispatch(startDeleteMeetup({meetupId: id}))
   }
-
-
 }
