@@ -1,9 +1,11 @@
 import {Action, createReducer, on} from '@ngrx/store';
 import {
+  createMeetupFail,
+  createMeetupSuccess, deleteMeetupFail, deleteMeetupSuccess,
   retrieveMeetupFail,
   retrieveMeetupsFail,
   retrieveMeetupsSuccess,
-  retrieveMeetupSuccess
+  retrieveMeetupSuccess, updateMeetupFail, updateMeetupSuccess
 } from "./actions/meetups.actions";
 
 
@@ -46,4 +48,40 @@ export const reducer = createReducer(initialState,
         , error: [...payload.error]
       }
     }
-  ),);
+  ), on(updateMeetupSuccess, (state, payload) => {
+      return {
+        ...state
+        , meetup: payload.meetup
+      }
+    }
+  ), on(updateMeetupFail, (state, payload) => {
+      return {
+        ...state
+        , error: [...payload.error]
+      }
+    }
+  ), on(createMeetupSuccess, (state, payload) => {
+      return {
+        ...state
+        , meetups: payload.meetups
+      }
+    }
+  ), on(createMeetupFail, (state, payload) => {
+      return {
+        ...state
+        , error: [...payload.error]
+      }
+    }
+  ), on(deleteMeetupSuccess, (state, payload) => {
+      return {
+        ...state
+        , meetups: payload.meetups
+      }
+    }
+  ), on(deleteMeetupFail, (state, payload) => {
+      return {
+        ...state,
+        error: [...payload.error]
+      }
+    }
+  ));

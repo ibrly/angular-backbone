@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {
+  deleteMeetupSuccess,
   retrieveMeetupFail,
   retrieveMeetupsFail,
-  retrieveMeetupsSuccess, retrieveMeetupSuccess,
+  retrieveMeetupsSuccess, retrieveMeetupSuccess, startDeleteMeetup,
   startRetrieveMeetup,
   startRetrieveMeetups
 } from "../actions/meetups.actions";
@@ -32,6 +33,25 @@ export class MeetupsEffects {
           return retrieveMeetupSuccess({meetup: responseData['data']});
         }), catchError((error) => {
           return of(retrieveMeetupFail({error: error}));
+        }))
+    })
+  ))
+
+  deleteMeetup$ = createEffect(() => this.actions$.pipe(
+    ofType(startDeleteMeetup),
+    switchMap((data) => {
+      return this.http.delete<any>(`https://backbonebk.inteligencia.co.uk/api/meetups/${data.meetupId}`)
+        .pipe(map(responseData => {
+          return deleteMeetupSuccess({meetups: responseData['data']});
+        }), catchError((error) => {
+          return of(retrieveMeetupFail({error: error}));
+        }), switchMap(() => {
+          return this.http.get<any>('https://backbonebk.inteligencia.co.uk/api/meetups')
+            .pipe(map(responseData => {
+              return retrieveMeetupsSuccess({meetups: responseData['data']});
+            }), catchError((error) => {
+              return of(retrieveMeetupsFail({error: error}));
+            }))
         }))
     })
   ))
