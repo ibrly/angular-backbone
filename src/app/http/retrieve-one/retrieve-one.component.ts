@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpService} from "../http.service";
 import {ActivatedRoute} from "@angular/router";
+import {Store} from "@ngrx/store";
+import {State} from "../../store/reducers";
+import {startRetrieveMeetup} from "../../store/reducers/meetup/actions/meetups.actions";
 
 @Component({
   selector: 'app-retrieve-one',
@@ -12,25 +14,26 @@ export class RetrieveOneComponent implements OnInit {
   meetUp: any;
   update: boolean = false;
 
-  constructor(private http: HttpService, private route: ActivatedRoute) {
+  constructor(private store: Store<State>, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    let id = this.route.snapshot.paramMap.get('id') as string;
-    this.http.retrieveMeetup(id).subscribe(data => {
+    this.route.params.subscribe(params => {
+      this.store.dispatch(startRetrieveMeetup({meetupId: params['id']}));
+    });
+    this.store.select('meetups').subscribe(state => {
       this.loading = false;
-      this.meetUp = data['data'];
+      this.meetUp = state.meetup;
     });
   }
 
   updateMeetUp() {
     this.loading = true;
-    console.log(this.meetUp);
-    this.http.updateMeetup(this.meetUp.attributes, this.meetUp.id).subscribe(data => {
-      this.meetUp = data['data'];
-      this.update = false;
-      this.loading = false;
-    });
+    /*   this.http.updateMeetup(this.meetUp.attributes, this.meetUp.id).subscribe(data => {
+         this.meetUp = data['data'];
+         this.update = false;
+         this.loading = false;
+       })*/
   }
 
 

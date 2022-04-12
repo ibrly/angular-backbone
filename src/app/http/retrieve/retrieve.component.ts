@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpService} from "../http.service";
+import {Store} from "@ngrx/store";
+import {startRetrieveMeetups} from "../../store/reducers/meetup/actions/meetups.actions";
+import {State} from "../../store/reducers";
 
 @Component({
   selector: 'app-retrieve',
@@ -8,18 +11,17 @@ import {HttpService} from "../http.service";
 })
 export class RetrieveComponent implements OnInit {
   loading: boolean = true;
-
   meetups: Array<{ id: number, attributes: { title: string, description: string, address: string, image: string } }>;
 
-  constructor(private http: HttpService) {
-
+  constructor(private http: HttpService, private store: Store<State>) {
   }
 
   ngOnInit(): void {
-    this.http.retrieveMeetups().subscribe(data => {
-      this.meetups = data;
+    this.store.dispatch(startRetrieveMeetups())
+    this.store.select('meetups').subscribe(meetupd => {
+      this.meetups = meetupd.meetups;
       this.loading = false;
-    });
+    })
   }
 
   onDelete(id: number) {
@@ -28,7 +30,6 @@ export class RetrieveComponent implements OnInit {
       this.http.retrieveMeetups().subscribe(data => {
         this.loading = false;
         this.meetups = data;
-
       });
     });
   }

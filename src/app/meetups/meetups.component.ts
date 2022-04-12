@@ -1,7 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {State} from "../store/reducers/meetup/meetups.reducer";
-import {retrieveMeetups} from "../store/reducers/meetup/actions/meetups.actions";
 
 @Component({
   selector: 'app-meetups',
@@ -10,11 +7,10 @@ import {retrieveMeetups} from "../store/reducers/meetup/actions/meetups.actions"
 })
 export class MeetupsComponent implements OnInit {
 
-  constructor(private store: Store<State>) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(retrieveMeetups())
   }
 
 }
