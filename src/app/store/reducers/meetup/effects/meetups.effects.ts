@@ -4,7 +4,7 @@ import {
   deleteMeetupSuccess,
   retrieveMeetupFail,
   retrieveMeetupsFail,
-  retrieveMeetupsSuccess, retrieveMeetupSuccess, startDeleteMeetup,
+  retrieveMeetupsSuccess, retrieveMeetupSuccess, startCreateMeetup, startDeleteMeetup,
   startRetrieveMeetup,
   startRetrieveMeetups
 } from "../actions/meetups.actions";
@@ -37,6 +37,26 @@ export class MeetupsEffects {
     })
   ))
 
+  createMeetup$ = createEffect(() => this.actions$.pipe(
+    ofType(startCreateMeetup),
+    switchMap((data) => {
+      return this.http.post<any>(`https://backbonebk.inteligencia.co.uk/api/meetups/`, {data: data.meetup})
+        .pipe(map(responseData => {
+            return deleteMeetupSuccess({meetups: responseData['data']});
+          }),
+          catchError((error) => {
+            return of(retrieveMeetupFail({error: error}));
+          }),
+          switchMap(() => {
+            return this.http.get<any>('https://backbonebk.inteligencia.co.uk/api/meetups')
+              .pipe(map(responseData => {
+                return retrieveMeetupsSuccess({meetups: responseData['data']});
+              }), catchError((error) => {
+                return of(retrieveMeetupsFail({error: error}));
+              }))
+          }))
+    })
+  ))
   deleteMeetup$ = createEffect(() => this.actions$.pipe(
     ofType(startDeleteMeetup),
     switchMap((data) => {
