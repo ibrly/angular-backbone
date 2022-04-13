@@ -3,11 +3,19 @@ import {HttpService} from "../http.service";
 import {Store} from "@ngrx/store";
 import {startDeleteMeetup, startRetrieveMeetups} from "../../store/reducers/meetup/actions/meetups.actions";
 import {State} from "../../store/reducers";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-retrieve',
   templateUrl: './retrieve.component.html',
-  styleUrls: ['./retrieve.component.scss']
+  styleUrls: ['./retrieve.component.scss'],
+  animations: [
+    trigger('fade', [
+      state('in', style({opacity: 1, transform: 'translateX(0)'})),
+      transition('void => *', [animate(1000, style({opacity: 0, transform: 'translateX(-100%)'}))]),
+      transition('* => void', [animate(1000, style({opacity: 0, transform: 'translateX(100%)'}))])
+    ])
+  ]
 })
 export class RetrieveComponent implements OnInit {
   loading: boolean = true;

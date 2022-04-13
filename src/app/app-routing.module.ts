@@ -1,12 +1,21 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {MeetupsComponent} from "./meetups/meetups.component";
+import {AnimationsComponent} from "./animations/animations.component";
 
 const routes: Routes = [{
-  path: '', redirectTo: 'home', pathMatch: 'full'
+  path: '',
+  redirectTo: 'home',
+  pathMatch: 'full'
 },
-  {path: 'meetup', component: MeetupsComponent},
-  {path: 'home', loadChildren: () => import('./basics/basics.module').then(m => m.BasicsModule)},
+  {
+    path: 'meetup',
+    component: MeetupsComponent
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./basics/basics.module').then(m => m.BasicsModule)
+  },
   {
     path: 'communicate',
     loadChildren: () => import('./communication/communication.module').then(m => m.CommunicationModule)
@@ -35,10 +44,17 @@ const routes: Routes = [{
     path: 'pipes',
     loadChildren: () => import('./pipes/pipes.module').then(m => m.PipesModule)
   },
+  {
+    path: 'animations',
+    component: AnimationsComponent
+  },
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, initialNavigation: 'enabledBlocking' })],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules,
+    initialNavigation: 'enabledBlocking'
+  })],
   exports: [RouterModule]
 })
 
