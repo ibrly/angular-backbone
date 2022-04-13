@@ -1,0 +1,8 @@
+<p [@fadeInOut]="fadeInOut">animations works!</p>
+<button (click)="changeState()">Toggle Animation</button>
+<button (click)="halfState()">Half</button>
+<button (click)="addToList()">Add To List</button>
+<button (click)="removeFromList()">Remove From List</button>
+<ul>
+  <li [@fadeInOut] *ngFor="let item of list">{{item}}</li>
+</ul>
