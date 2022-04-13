@@ -10,7 +10,8 @@ import {FormsRoutingModule} from "./forms-routing.module";
   declarations: [TdComponent,
     ReactiveComponent,
     FormsComponent
-  ], exports: [TdComponent,
+  ],
+  exports: [TdComponent,
     ReactiveComponent,
     FormsComponent
   ],

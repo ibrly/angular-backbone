@@ -3,6 +3,7 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
 
 import { MeetupsEffects } from './meetups.effects';
+import {HttpClient, HttpHandler} from "@angular/common/http";
 
 describe('MeetupsEffects', () => {
   let actions$: Observable<any>;
@@ -12,7 +13,8 @@ describe('MeetupsEffects', () => {
     TestBed.configureTestingModule({
       providers: [
         MeetupsEffects,
-        provideMockActions(() => actions$)
+        provideMockActions(() => actions$),
+        HttpClient,HttpHandler
       ]
     });
 

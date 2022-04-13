@@ -15,8 +15,8 @@ import {MeetupsComponent} from './meetups/meetups.component';
 import {reducer} from "./store/reducers/meetup/meetups.reducer";
 import {MeetupsEffects} from "./store/reducers/meetup/effects/meetups.effects";
 import {ServiceWorkerModule} from '@angular/service-worker';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { AnimationsComponent } from './animations/animations.component';
+import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {AnimationsComponent} from './animations/animations.component';
 
 @NgModule({
   declarations: [
@@ -27,11 +27,15 @@ import { AnimationsComponent } from './animations/animations.component';
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
     AppRoutingModule,
+    NoopAnimationsModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({meetups: reducer}, {}),
     EffectsModule.forRoot([MeetupsEffects]),
     StoreRouterConnectingModule.forRoot(),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production
+    }),
     HttpClientModule,
     FormsModule,
     SharedModule,
