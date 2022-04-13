@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/platform-server": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@angular/service-worker": "~13.3.0",
     "@ngrx/component-store": "^13.1.0",
     "@ngrx/effects": "^13.1.0",
     "@ngrx/entity": "^13.1.0",
