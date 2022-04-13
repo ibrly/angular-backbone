@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {HttpService} from "../http.service";
-import {Subject} from "rxjs";
 import {State} from "../../store/reducers";
 import {Store} from "@ngrx/store";
 import {startCreateMeetup} from "../../store/reducers/meetup/actions/meetups.actions";
@@ -15,7 +13,7 @@ export class CreateComponent implements OnInit {
   loading: boolean = false;
   error: string;
 
-  constructor(private store: Store<State>, private http: HttpService) {
+  constructor(private store: Store<State>) {
   }
 
   ngOnInit(): void {

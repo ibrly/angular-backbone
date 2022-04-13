@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewchildComponent } from './viewchild.component';
+import {Router} from "@angular/router";
 
 describe('ViewchildComponent', () => {
   let component: ViewchildComponent;
@@ -8,7 +9,7 @@ describe('ViewchildComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewchildComponent ]
+      declarations: [ ViewchildComponent ],providers: [Router]
     })
     .compileComponents();
   });
