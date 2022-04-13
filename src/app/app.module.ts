@@ -21,7 +21,7 @@ import {MeetupsEffects} from "./store/reducers/meetup/effects/meetups.effects";
     MeetupsComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     StoreModule.forRoot({meetups: reducer}, {}),
     EffectsModule.forRoot([MeetupsEffects]),

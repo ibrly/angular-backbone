@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "dev:ssr": "ng run angular-backbone:serve-ssr",
+    "serve:ssr": "node dist/angular-backbone/server/main.js",
+    "build:ssr": "ng build && ng run angular-backbone:server",
+    "prerender": "ng run angular-backbone:prerender"
   },
   "private": true,
   "dependencies": {
@@ -17,6 +21,7 @@
     "@angular/forms": "~13.3.0",
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
+    "@angular/platform-server": "~13.3.0",
     "@angular/router": "~13.3.0",
     "@ngrx/component-store": "^13.1.0",
     "@ngrx/effects": "^13.1.0",
@@ -24,6 +29,8 @@
     "@ngrx/router-store": "^13.1.0",
     "@ngrx/store": "^13.1.0",
     "@ngrx/store-devtools": "^13.1.0",
+    "@nguniversal/express-engine": "^13.1.0",
+    "express": "^4.15.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -33,6 +40,8 @@
     "@angular/cli": "~13.3.1",
     "@angular/compiler-cli": "~13.3.0",
     "@ngrx/schematics": "^13.1.0",
+    "@nguniversal/builders": "^13.1.0",
+    "@types/express": "^4.17.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~4.0.0",
