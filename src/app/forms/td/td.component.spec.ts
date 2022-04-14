@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TdComponent } from './td.component';
+import {TdComponent} from './td.component';
+import {FormsModule} from "@angular/forms";
 
 describe('TdComponent', () => {
   let component: TdComponent;
@@ -8,9 +9,12 @@ describe('TdComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TdComponent ]
+      declarations: [TdComponent],
+      imports: [
+        FormsModule
+      ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

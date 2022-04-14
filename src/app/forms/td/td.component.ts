@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 
 @Component({
@@ -9,7 +9,8 @@ import {NgForm} from "@angular/forms";
 export class TdComponent implements OnInit {
   @ViewChild('f') form: NgForm;
   binding: string = 'default';
-  genders: Array<string> = ['Male', 'Female']
+  genders: Array<string> = ['Male',
+    'Female']
 
   constructor() {
   }
@@ -17,8 +18,10 @@ export class TdComponent implements OnInit {
   fill() {
     this.form.setValue({
       userData: {
-        first_name: 'Ebrahim', last_name: 'Ahmed'
-      }, gender: 'Male'
+        first_name: 'Ebrahim',
+        last_name: 'Ahmed'
+      },
+      gender: 'Male'
     })
   }
 
