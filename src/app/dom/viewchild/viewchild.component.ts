@@ -20,7 +20,7 @@ export class ViewchildComponent implements OnInit {
       console.log(this.myInput?.nativeElement.textContent);
       console.log(this.myContent?.nativeElement.textContent);
     }, 2000);
-      this.dt = this.route.snapshot.params['id']
+    this.dt = this.route.snapshot.params['id']
 
   }
 

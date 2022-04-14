@@ -20,6 +20,7 @@ export class RetrieveOneComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      console.log(params);
       this.id = params['id'];
       this.store.dispatch(startRetrieveMeetup({meetupId: params['id']}));
     });
