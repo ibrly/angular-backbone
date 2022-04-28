@@ -32,6 +32,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": [],
@@ -103,6 +104,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -172,6 +174,7 @@
   },
   "defaultProject": "angular-backbone",
   "cli": {
+    "analytics": "fcdcb731-7f39-47d0-a53e-a30c20367fe3",
     "defaultCollection": "@ngrx/schematics"
   }
 }

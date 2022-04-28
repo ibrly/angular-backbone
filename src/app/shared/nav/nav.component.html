@@ -1,32 +1,66 @@
-<div><a [routerLink]="['/home']" routerLinkActive="active" class="nav-link">
-  <span>Basics</span>
-</a>
-  <a routerLinkActive="active" [routerLink]="['/dom/1']" [queryParams]="{get:2}" [fragment]="'section'"
-     class="nav-link">
-    <span>Dom {{dt}}</span>
-  </a>
-  <a routerLinkActive="active" [routerLink]="['/communicate']" class="nav-link">
-    <span>Communicate</span>
-  </a>
-  <a routerLinkActive="active" [routerLink]="['/l-c-hooks']" class="nav-link">
-    <span>Life cycle hooks</span>
-  </a>
-  <a routerLinkActive="active" [routerLink]="['/forms']" class="nav-link">
-    <span>Forms</span>
-  </a>
-  <a routerLinkActive="active" [routerLink]="['/pipes']" class="nav-link">
-    <span>Pipes</span>
-  </a>
-  <a routerLinkActive="active" [routerLink]="['/http']" class="nav-link">
-    <span>Http</span>
-  </a>
-  <a routerLinkActive="active" [routerLink]="['/dynamic']" class="nav-link">
-    <span>Dynamic</span>
-  </a>
-  <a routerLinkActive="active" [routerLink]="['/animations']" class="nav-link">
-    <span>Animations</span>
-  </a>
-  <button (click)="goTo()" class="nav-link">go to basics Programmatically</button>
-  <button (click)="goToFragQParams()" class="nav-link">go to basics Programmatically With Fragments and Query Params
+<mat-toolbar color="primary">
+  <button mat-button
+          [routerLink]="['/home']"
+          routerLinkActive="active"
+  >
+    Basics
   </button>
-</div>
+  <button mat-button
+          routerLinkActive="active"
+          [routerLink]="['/dom/1']"
+          [queryParams]="{get:2}"
+          [fragment]="'section'"
+  >
+    Dom {{dt}}
+  </button>
+  <button mat-button
+          routerLinkActive="active"
+          [routerLink]="['/communicate']"
+  >
+    Communicate
+  </button>
+  <button mat-button
+          routerLinkActive="active"
+          [routerLink]="['/l-c-hooks']"
+  >
+    Life cycle hooks
+  </button>
+  <button mat-button
+          routerLinkActive="active"
+          [routerLink]="['/forms']"
+  >
+    Forms
+  </button>
+  <button mat-button
+          routerLinkActive="active"
+          [routerLink]="['/pipes']"
+  >
+    Pipes
+  </button>
+  <button mat-button
+          routerLinkActive="active"
+          [routerLink]="['/http']"
+  >
+    Http
+  </button>
+  <button mat-button
+          routerLinkActive="active"
+          [routerLink]="['/dynamic']"
+  >
+    Dynamic
+  </button>
+  <button mat-button
+          routerLinkActive="active"
+          [routerLink]="['/animations']"
+  >
+    Animations
+  </button>
+  <button mat-button
+          (click)="goTo()"
+  >go to basics Programmatically
+  </button>
+  <button mat-button
+          (click)="goToFragQParams()"
+  >go to basics Programmatically With Fragments and Query Params
+  </button>
+</mat-toolbar>
