@@ -12,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 import {HomeComponent} from "../pages/home/home.component";
 import {SharedModule} from "../shared/shared.module";
 import {BasicsRoutingModule} from "./basics-routing.module";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 
 @NgModule({
@@ -24,10 +25,11 @@ import {BasicsRoutingModule} from "./basics-routing.module";
     IfComponent,
     StyleComponent,
     SwitchComponent],
-  imports: [
-    SharedModule,
-    BasicsRoutingModule
-  ], exports: [HomeComponent,
+    imports: [
+        SharedModule,
+        BasicsRoutingModule,
+        MatGridListModule
+    ], exports: [HomeComponent,
     ComponentComponent,
     InlineComponentComponent,
     DataBindingComponent,
