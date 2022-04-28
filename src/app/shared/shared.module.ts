@@ -4,6 +4,8 @@ import {NavComponent} from "./nav/nav.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import {RouterModule} from "@angular/router";
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule,
+    MatButtonModule
   ]
 })
 export class SharedModule {
