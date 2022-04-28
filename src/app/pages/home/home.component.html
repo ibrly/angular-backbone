@@ -1,8 +1,29 @@
-<app-component></app-component>
-<app-inline-component></app-inline-component>
-<app-data-binding></app-data-binding>
-<app-if></app-if>
-<app-for></app-for>
-<app-class></app-class>
-<app-style></app-style>
-<app-switch></app-switch>
+<mat-grid-list (window:resize)="handleSize($event)" [cols]="grid"
+               rowHeight="2:1">
+  <mat-grid-tile>
+    <app-component></app-component>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <app-inline-component></app-inline-component>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-data-binding></app-data-binding>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-if></app-if>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-for></app-for>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-class></app-class>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-style></app-style>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-switch></app-switch>
+  </mat-grid-tile>
+
+</mat-grid-list>
