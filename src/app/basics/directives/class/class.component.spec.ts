@@ -22,4 +22,9 @@ describe('ClassComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a class  green', function () {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('p').classList).toContain('green');
+  })
 });

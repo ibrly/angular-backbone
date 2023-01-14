@@ -18,7 +18,7 @@ export class MeetupsEffects {
   retrieveMeetups$ = createEffect(() => this.actions$.pipe(
     ofType(startRetrieveMeetups),
     switchMap(() => {
-      return this.http.get<any>('https://backbonebk.inteligencia.co.uk/api/meetups')
+      return this.http.get<any>('http://localhost:1350/api/meetups')
         .pipe(map(responseData => {
           return retrieveMeetupsSuccess({meetups: responseData['data']});
         }), catchError((error) => {
@@ -29,7 +29,7 @@ export class MeetupsEffects {
   retrieveMeetup$ = createEffect(() => this.actions$.pipe(
     ofType(startRetrieveMeetup),
     switchMap((data) => {
-      return this.http.get<any>(`https://backbonebk.inteligencia.co.uk/api/meetups/${data.meetupId}`)
+      return this.http.get<any>(`http://localhost:1350/api/meetups/${data.meetupId}`)
         .pipe(map(responseData => {
           return retrieveMeetupSuccess({meetup: responseData['data']});
         }), catchError((error) => {
@@ -40,7 +40,7 @@ export class MeetupsEffects {
   createMeetup$ = createEffect(() => this.actions$.pipe(
     ofType(startCreateMeetup),
     switchMap((data) => {
-      return this.http.post<any>(`https://backbonebk.inteligencia.co.uk/api/meetups/`, {data: data.meetup})
+      return this.http.post<any>(`http://localhost:1350/api/meetups/`, {data: data.meetup})
         .pipe(map(responseData => {
             return deleteMeetupSuccess({meetups: responseData['data']});
           }),
@@ -48,7 +48,7 @@ export class MeetupsEffects {
             return of(retrieveMeetupFail({error: error}));
           }),
           switchMap(() => {
-            return this.http.get<any>('https://backbonebk.inteligencia.co.uk/api/meetups')
+            return this.http.get<any>('http://localhost:1350/api/meetups')
               .pipe(map(responseData => {
                 return retrieveMeetupsSuccess({meetups: responseData['data']});
               }), catchError((error) => {
@@ -60,7 +60,7 @@ export class MeetupsEffects {
   updateMeetup$ = createEffect(() => this.actions$.pipe(
     ofType(startUpdateMeetup),
     switchMap((data) => {
-      return this.http.put<any>(`https://backbonebk.inteligencia.co.uk/api/meetups/${data.meetupId}`, {data: data.meetup})
+      return this.http.put<any>(`http://localhost:1350/api/meetups/${data.meetupId}`, {data: data.meetup})
         .pipe(map(responseData => {
             return updateMeetupSuccess({meetup: responseData['data']});
           }),
@@ -72,13 +72,13 @@ export class MeetupsEffects {
   deleteMeetup$ = createEffect(() => this.actions$.pipe(
     ofType(startDeleteMeetup),
     switchMap((data) => {
-      return this.http.delete<any>(`https://backbonebk.inteligencia.co.uk/api/meetups/${data.meetupId}`)
+      return this.http.delete<any>(`http://localhost:1350/api/meetups/${data.meetupId}`)
         .pipe(map(responseData => {
           return deleteMeetupSuccess({meetups: responseData['data']});
         }), catchError((error) => {
           return of(deleteMeetupFail({error: error}));
         }), switchMap(() => {
-          return this.http.get<any>('https://backbonebk.inteligencia.co.uk/api/meetups')
+          return this.http.get<any>('http://localhost:1350/api/meetups')
             .pipe(map(responseData => {
               return retrieveMeetupsSuccess({meetups: responseData['data']});
             }), catchError((error) => {

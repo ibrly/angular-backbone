@@ -31,7 +31,7 @@
     {
       "name": "app",
       "urls": [
-        "https://backbonebk.inteligencia.co.uk/api/meetups"
+        "http://localhost:1350/api/meetups"
       ],
       "cacheConfig": {
         "maxSize": 5,
