@@ -1,11 +1,12 @@
 import {createAction, props} from '@ngrx/store';
+import {Meetup} from "../../../http/models/Meetup";
 
 export const startRetrieveMeetups = createAction(
   '[Meetups] Start Retrieve Meetups'
 );
 export const retrieveMeetupsSuccess = createAction(
   '[Meetups] Retrieve Meetups Success'
-  , props<{ meetups: any }>()
+  , props<{ meetups: Meetup[] }>()
 );
 export const retrieveMeetupsFail = createAction(
   '[Meetups] Retrieve Meetups Fail'
@@ -13,11 +14,11 @@ export const retrieveMeetupsFail = createAction(
 );
 export const startRetrieveMeetup = createAction(
   '[Meetups] Start Retrieve Meetup',
-  props<{ meetupId: string }>()
+  props<{ meetupId: number }>()
 );
 export const retrieveMeetupSuccess = createAction(
   '[Meetups] Retrieve Meetup Success'
-  , props<{ meetup: any }>()
+  , props<{ meetup: Meetup }>()
 );
 export const retrieveMeetupFail = createAction(
   '[Meetups] Retrieve Meetup Fail'
@@ -29,7 +30,7 @@ export const startCreateMeetup = createAction(
 );
 export const createMeetupSuccess = createAction(
   '[Meetups] Create Meetup Success'
-  , props<{ meetups: any }>()
+  , props<{ meetup: Meetup }>()
 );
 export const createMeetupFail = createAction(
   '[Meetups] Create Meetup Fail'
@@ -37,11 +38,11 @@ export const createMeetupFail = createAction(
 );
 export const startUpdateMeetup = createAction(
   '[Meetups] Start Update Meetup',
-  props<{ meetupId: string, meetup: any }>()
+  props<{ meetup: Meetup }>()
 );
 export const updateMeetupSuccess = createAction(
   '[Meetups] Update Meetup Success'
-  , props<{ meetup: any }>()
+  , props<{ meetup: Meetup }>()
 );
 export const updateMeetupFail = createAction(
   '[Meetups] Update Meetup Fail'
@@ -53,7 +54,7 @@ export const startDeleteMeetup = createAction(
 );
 export const deleteMeetupSuccess = createAction(
   '[Meetups] Delete Meetup Success'
-  , props<{ meetups: any }>()
+  , props<{ meetups: Meetup[] }>()
 );
 export const deleteMeetupFail = createAction(
   '[Meetups] Delete Meetup Fail'
