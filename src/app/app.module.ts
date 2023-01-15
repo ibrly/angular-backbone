@@ -13,7 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {SharedModule} from "./shared/shared.module";
 import {MeetupsComponent} from './meetups/meetups.component';
 import {reducer} from "./store/reducers/meetup/meetups.reducer";
-import {MeetupsEffects} from "./store/reducers/meetup/effects/meetups.effects";
+import {MeetupsEffects} from "./store/reducers/meetup/meetups.effects";
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AnimationsComponent} from './animations/animations.component';

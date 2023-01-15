@@ -1,8 +1,5 @@
 import {
-  ActionReducer,
   ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
   MetaReducer
 } from '@ngrx/store';
 import {environment} from '../../../environments/environment';
@@ -11,7 +8,7 @@ import * as meetups from './meetup/meetups.reducer';
 export const stateFeatureKey = 'state';
 
 export interface State {
-  meetups: meetups.State;
+  meetups: meetups.MeetupsState;
 }
 
 export const reducers: ActionReducerMap<State> = {

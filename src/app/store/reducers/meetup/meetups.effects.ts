@@ -1,14 +1,21 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {
-  createMeetupFail, deleteMeetupFail,
+  createMeetupFail,
+  deleteMeetupFail,
   deleteMeetupSuccess,
   retrieveMeetupFail,
   retrieveMeetupsFail,
-  retrieveMeetupsSuccess, retrieveMeetupSuccess, startCreateMeetup, startDeleteMeetup,
+  retrieveMeetupsSuccess,
+  retrieveMeetupSuccess,
+  startCreateMeetup,
+  startDeleteMeetup,
   startRetrieveMeetup,
-  startRetrieveMeetups, startUpdateMeetup, updateMeetupFail, updateMeetupSuccess
-} from "../actions/meetups.actions";
+  startRetrieveMeetups,
+  startUpdateMeetup,
+  updateMeetupFail,
+  updateMeetupSuccess
+} from "./meetups.actions";
 import {catchError, map, of, switchMap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
@@ -60,7 +67,7 @@ export class MeetupsEffects {
   updateMeetup$ = createEffect(() => this.actions$.pipe(
     ofType(startUpdateMeetup),
     switchMap((data) => {
-      return this.http.put<any>(`http://localhost:1350/api/meetups/${data.meetupId}`, {data: data.meetup})
+      return this.http.put<any>(`http://localhost:1350/api/meetups/${data.meetup.id}`, {data: data.meetup.attributes})
         .pipe(map(responseData => {
             return updateMeetupSuccess({meetup: responseData['data']});
           }),

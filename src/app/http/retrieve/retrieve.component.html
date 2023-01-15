@@ -1,6 +1,6 @@
 <p>retrieve works!</p>
-<h1 *ngIf="loading">Loading</h1>
-<div *ngFor="let meetUp of meetups" [@fade]>
+<h1 *ngIf="!meetups">Loading</h1>
+<div *ngFor="let meetUp of meetups|async" [@fade]>
   <h2>{{meetUp.attributes.title}}</h2>
   <p>{{meetUp.attributes.description}}</p>
   <p>{{meetUp.attributes.address}}</p>
