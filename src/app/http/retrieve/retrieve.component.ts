@@ -11,13 +11,13 @@ import {retrieveAnimations} from "./retrieve.animations";
   animations: retrieveAnimations
 })
 export class RetrieveComponent implements OnInit {
-  meetups: Observable<Meetup[]>;
+  meetups$: Observable<Meetup[]>;
 
   constructor(private meetupsService: MeetupsService) {
   }
 
   ngOnInit(): void {
-    this.meetups = this.meetupsService.retrieveMeetups()
+    this.meetups$ = this.meetupsService.retrieveMeetups()
   }
 
   onDelete(id: number) {

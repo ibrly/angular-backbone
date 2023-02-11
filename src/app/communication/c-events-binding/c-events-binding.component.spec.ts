@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CEventsBindingComponent } from './c-events-binding.component';
+import {ChildoComponent} from "./childo/childo.component";
 
 describe('CEventsBindingComponent', () => {
   let component: CEventsBindingComponent;
@@ -8,7 +9,7 @@ describe('CEventsBindingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CEventsBindingComponent ]
+      declarations: [ CEventsBindingComponent,ChildoComponent  ]
     })
     .compileComponents();
   });
