@@ -20,7 +20,6 @@ export class HttpComponent implements OnInit {
 
 
   onRetrievePost() {
-    console.log();
   }
 
   onDeletePost(postData: { title: string; content: string }) {
