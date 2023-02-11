@@ -1,7 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {RetrieveComponent} from './retrieve.component';
-import {HttpModule} from "../http.module";
 import {MeetupsService} from "../meetups.service";
 import {of} from "rxjs";
 import {meetups} from "../../testing/httptest/db-data";
@@ -9,7 +8,7 @@ import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {RouterTestingModule} from "@angular/router/testing";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
-fdescribe('RetrieveComponent', () => {
+describe('RetrieveComponent', () => {
   let component: RetrieveComponent;
   let fixture: ComponentFixture<RetrieveComponent>;
   let meetupsService: any;
@@ -31,18 +30,28 @@ fdescribe('RetrieveComponent', () => {
     component = fixture.componentInstance;
     meetupsService = TestBed.inject(MeetupsService);
     meetupsService.retrieveMeetups.and.returnValue(of(meetups));
-
     fixture.detectChanges();
-
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
   it('should trigger retrieveMeetups method which is return observable', function () {
-    meetupsService.retrieveMeetups.and.returnValue(of(meetups));
-    fixture.detectChanges()
-    expect(component.meetups).toBeTruthy();
-
+    expect(component.meetups$).toBeTruthy();
   });
+  it('should render meetups', function () {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelectorAll('h2').length).toEqual(meetups.length);
+  })
+  it('should meetups$ length after ngOnInit be equal meetups length', function () {
+    component.ngOnInit();
+    component.meetups$.subscribe(meetupsItems => {
+      expect(meetupsItems.length).toBe(meetups.length);
+    })
+  });
+  it('should trigger deleteMeetup method', function () {
+    component.onDelete(1);
+    expect(meetupsService.deleteMeetup).toHaveBeenCalled();
+  })
+
 });
