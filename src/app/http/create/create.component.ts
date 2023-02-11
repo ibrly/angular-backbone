@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {State} from "../../store/reducers";
 import {Store} from "@ngrx/store";
-import {startCreateMeetup} from "../../store/reducers/meetup/actions/meetups.actions";
+import {startCreateMeetup} from "../../store/reducers/meetup/meetups.actions";
 
 @Component({
   selector: 'app-create',

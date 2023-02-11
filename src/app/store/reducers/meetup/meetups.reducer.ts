@@ -1,25 +1,29 @@
-import {Action, createReducer, on} from '@ngrx/store';
+import {createReducer, on} from '@ngrx/store';
 import {
   createMeetupFail,
-  createMeetupSuccess, deleteMeetupFail, deleteMeetupSuccess,
+  createMeetupSuccess,
+  deleteMeetupFail,
+  deleteMeetupSuccess,
   retrieveMeetupFail,
   retrieveMeetupsFail,
   retrieveMeetupsSuccess,
-  retrieveMeetupSuccess, updateMeetupFail, updateMeetupSuccess
-} from "./actions/meetups.actions";
+  retrieveMeetupSuccess,
+  updateMeetupFail,
+  updateMeetupSuccess
+} from "./meetups.actions";
+import {Meetup} from "../../../http/models/Meetup";
 
 
-export const meetupsFeatureKey = 'meetups';
 
-export interface State {
-  meetups: Array<{ id: number, attributes: { title: string, description: string, address: string, image: string } }>;
-  meetup: any;
+export interface MeetupsState {
+  meetups: Array<Meetup>;
+  meetup?: Meetup;
   error: any;
 }
 
-export const initialState: State = {
+export const initialState: MeetupsState = {
   meetups: [],
-  meetup: null,
+  meetup: undefined,
   error: null
 };
 
@@ -63,7 +67,7 @@ export const reducer = createReducer(initialState,
   ), on(createMeetupSuccess, (state, payload) => {
       return {
         ...state
-        , meetups: payload.meetups
+        , meetup: payload.meetup
       }
     }
   ), on(createMeetupFail, (state, payload) => {

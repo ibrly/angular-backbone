@@ -1,23 +1,24 @@
-<h1 *ngIf="loading">Loading</h1>
-<div *ngIf="meetUp && !update">
-  <h2>{{meetUp.title}}</h2>
-  <p>{{meetUp.description}}</p>
-  <p>{{meetUp.address}}</p>
-  <img [src]="meetUp.image" alt="">
-  <button (click)="update=!update">Update</button>
-</div>
-<div *ngIf="meetUp && update">
-  <h2>Update MeetUp</h2>
-  <form #f (ngSubmit)="updateMeetUp()">
-    <label>Title</label>
-    <input type="text" ngModel name="title" [(ngModel)]="meetUp.title">
-    <label>Description</label>
-    <input type="text" ngModel name="description" [(ngModel)]="meetUp.description">
-    <label>Address</label>
-    <input type="text" ngModel name="address" [(ngModel)]="meetUp.address">
-    <label>Image</label>
-    <input type="text" ngModel name="image" [(ngModel)]="meetUp.image">
-    <button>Update</button>
-    <button (click)="update=!update">Cancel</button>
-  </form>
-</div>
+<ng-container *ngIf="(meetUp|async)?.attributes as meetup">
+  <div *ngIf="meetup && !update">
+    <h2>{{meetup.title}}</h2>
+    <p>{{meetup.description}}</p>
+    <p>{{meetup.address}}</p>
+    <img [src]="meetup.image" alt="">
+    <button (click)="update=!update">Update</button>
+  </div>
+  <div *ngIf="meetup && update">
+    <h2>Update MeetUp</h2>
+    <form #f (ngSubmit)="updateMeetUp()" *ngIf="updatedMeetup">
+      <label>Title</label>
+      <input type="text" ngModel name="title" [(ngModel)]="updatedMeetup.attributes.title">
+      <label>Description</label>
+      <input type="text" ngModel name="description" [(ngModel)]="updatedMeetup.attributes.description">
+      <label>Address</label>
+      <input type="text" ngModel name="address" [(ngModel)]="updatedMeetup.attributes.address">
+      <label>Image</label>
+      <input type="text" ngModel name="image" [(ngModel)]="updatedMeetup.attributes.image">
+      <button>Update</button>
+      <button (click)="update=!update">Cancel</button>
+    </form>
+  </div>
+</ng-container>
