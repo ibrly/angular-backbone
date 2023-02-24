@@ -17,12 +17,14 @@ import {MeetupsEffects} from "./store/reducers/meetup/meetups.effects";
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AnimationsComponent} from './animations/animations.component';
+import {AsyncTestingComponent} from "./async-testing/async-testing.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     MeetupsComponent,
-    AnimationsComponent
+    AnimationsComponent,
+    AsyncTestingComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),

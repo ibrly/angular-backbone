@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {MeetupsComponent} from "./meetups/meetups.component";
 import {AnimationsComponent} from "./animations/animations.component";
+import {AsyncTestingComponent} from "./async-testing/async-testing.component";
 
 const routes: Routes = [{
   path: '',
@@ -47,6 +48,9 @@ const routes: Routes = [{
   {
     path: 'animations',
     component: AnimationsComponent
+  }, {
+    path: 'async',
+    component: AsyncTestingComponent
   },
 ]
 
