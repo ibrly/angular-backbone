@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DomComponent } from './dom.component';
+import {DomComponent} from './dom.component';
+import {ViewchildComponent} from "../../dom/viewchild/viewchild.component";
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('DomComponent', () => {
   let component: DomComponent;
@@ -8,9 +10,9 @@ describe('DomComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DomComponent ]
+      declarations: [DomComponent, ViewchildComponent], imports: [RouterTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

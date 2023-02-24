@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
-import { provideMockActions } from '@ngrx/effects/testing';
-import { Observable } from 'rxjs';
+import {TestBed} from '@angular/core/testing';
+import {provideMockActions} from '@ngrx/effects/testing';
+import {Observable} from 'rxjs';
 
-import { MeetupsEffects } from './meetups.effects';
+import {MeetupsEffects} from './meetups.effects';
 import {HttpClient, HttpHandler} from "@angular/common/http";
 
 describe('MeetupsEffects', () => {

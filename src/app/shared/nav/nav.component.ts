@@ -1,19 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {Component} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {
+export class NavComponent {
+  constructor(private router: Router) {
   }
 
   dt: string | undefined;
-
-  ngOnInit(): void {
-  }
 
 
   goTo() {

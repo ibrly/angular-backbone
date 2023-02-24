@@ -2,8 +2,9 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {RetrieveOneComponent} from './retrieve-one.component';
 import {RouterTestingModule} from "@angular/router/testing";
-import {StoreModule} from "@ngrx/store";
 import {reducer} from "../../store/reducers/meetup/meetups.reducer";
+import {FormsModule} from "@angular/forms";
+import {StoreModule} from "@ngrx/store";
 
 describe('RetrieveOneComponent', () => {
   let component: RetrieveOneComponent;
@@ -12,8 +13,7 @@ describe('RetrieveOneComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule,
-        StoreModule.forRoot({meetups: reducer}, {}),
+      imports: [RouterTestingModule, FormsModule, StoreModule.forRoot({meetups: reducer}, {}),
       ],
       declarations: [RetrieveOneComponent]
 
