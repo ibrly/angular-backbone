@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CommunicationComponent } from './communication.component';
+import {CommunicationComponent} from './communication.component';
+import {CEventsBindingComponent} from "../../communication/c-events-binding/c-events-binding.component";
+import {PropertiesBindingComponent} from "../../communication/properties-binding/properties-binding.component";
 
 describe('CommunicationComponent', () => {
   let component: CommunicationComponent;
@@ -8,9 +10,9 @@ describe('CommunicationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CommunicationComponent ]
+      declarations: [CommunicationComponent, CEventsBindingComponent, PropertiesBindingComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

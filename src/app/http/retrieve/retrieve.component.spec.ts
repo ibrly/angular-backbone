@@ -36,20 +36,20 @@ describe('RetrieveComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should trigger retrieveMeetups method which is return observable', function () {
+  it('should trigger retrieveMeetups method which is return observable', () => {
     expect(component.meetups$).toBeTruthy();
   });
-  it('should render meetups', function () {
+  it('should render meetups', () => {
     const compiled = fixture.nativeElement;
     expect(compiled.querySelectorAll('h2').length).toEqual(meetups.length);
   })
-  it('should meetups$ length after ngOnInit be equal meetups length', function () {
+  it('should meetups$ length after ngOnInit be equal meetups length', () => {
     component.ngOnInit();
     component.meetups$.subscribe(meetupsItems => {
       expect(meetupsItems.length).toBe(meetups.length);
     })
   });
-  it('should trigger deleteMeetup method', function () {
+  it('should trigger deleteMeetup method', () => {
     component.onDelete(1);
     expect(meetupsService.deleteMeetup).toHaveBeenCalled();
   })

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NgContentComponent } from './ng-content.component';
+import {ContentchildComponent} from "../ngContent/contentchild/contentchild.component";
 
 describe('NgContentComponent', () => {
   let component: NgContentComponent;
@@ -8,7 +9,7 @@ describe('NgContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgContentComponent ]
+      declarations: [ NgContentComponent ,ContentchildComponent]
     })
     .compileComponents();
   });
