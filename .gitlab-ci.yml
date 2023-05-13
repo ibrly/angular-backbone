@@ -1,0 +1,151 @@
+services:
+  - docker:dind
+
+image: node:18-alpine
+
+stages:
+  - install_dependencies
+  - test
+  - build
+  - publish
+  - deploy
+
+install_dependencies:
+  stage: install_dependencies
+  script:
+    - npm install
+  only:
+    - merge_requests
+    - main
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules
+
+lint:
+  stage: test
+  only:
+    - merge_requests
+  script:
+    - npm link @angular/cli@15.1.1
+    - ng lint
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules
+    policy: pull
+
+stylelint:
+  stage: test
+  only:
+    - merge_requests
+  script:
+    - npm run stylelint
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules
+    policy: pull
+
+test:
+  image: trion/ng-cli-karma:15.1.1
+  stage: test
+  only:
+    - merge_requests
+  script:
+    - ng test --no-watch --no-progress
+  needs:
+    - install_dependencies
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules
+    policy: pull
+
+build_image:
+  stage: build
+  only:
+    - main
+    - merge_requests
+  script:
+    - npm link @angular/cli@15.1.1
+    - npm run build
+  artifacts:
+    paths:
+      - $CI_PROJECT_DIR/dist
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules
+    policy: pull
+
+push-staging-docker-registry:
+  image: docker:latest
+  stage: publish
+  only:
+    - main
+    - merge_requests
+  script:
+    - docker build -t registry.gitlab.com/ebrahimsolimanspace/portfolio .
+    - docker login -u ebrahimsoliman -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker push registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging
+
+staging-deploy:
+  image: docker:latest
+  stage: deploy
+  when: manual
+  only:
+    - merge_requests
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - ssh root@46.4.222.98 -p 2284 'docker run -p 80:80 --rm --name staging -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging'
+
+push-docker-registry:
+  image: docker:latest
+  stage: publish
+  only:
+    - main
+  script:
+    - docker build -t registry.gitlab.com/ebrahimsolimanspace/portfolio:production .
+    - docker login -u ebrahimsolimanspace -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker push registry.gitlab.com/ebrahimsolimanspace/portfolio:production
+
+production-deploy:
+  image: docker:latest
+  stage: deploy
+  environment:
+    name: production
+    url: https://ebrahimsoliman.com
+
+  only:
+    - main
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - ssh $SSH_HOST "docker stop portfolio && docker run -p 3000:80 --rm --name portfolio -d registry.gitlab.com/ebrahimsolimanspace/portfolio:production"
+
+
+
