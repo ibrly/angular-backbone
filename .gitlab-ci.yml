@@ -29,7 +29,7 @@ lint:
   only:
     - merge_requests
   script:
-    - npm link @angular/cli@15.1.1
+    - npm link @angular/cli@13.3.0
     - ng lint
   cache:
     key:
@@ -54,7 +54,7 @@ stylelint:
     policy: pull
 
 test:
-  image: trion/ng-cli-karma:15.1.1
+  image: trion/ng-cli-karma:13.3.0
   stage: test
   only:
     - merge_requests
@@ -76,7 +76,7 @@ build_image:
     - main
     - merge_requests
   script:
-    - npm link @angular/cli@15.1.1
+    - npm link @angular/cli@13.3.0
     - npm run build
   artifacts:
     paths:
