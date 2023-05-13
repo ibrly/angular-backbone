@@ -19,8 +19,6 @@ describe('RetrieveComponent', () => {
       imports: [
         HttpClientTestingModule,RouterTestingModule,BrowserAnimationsModule
       ], providers: [{provide: MeetupsService, useValue: meetupsServiceSpy}]
-
-
     })
       .compileComponents()
   });

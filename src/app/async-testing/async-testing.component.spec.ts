@@ -1,4 +1,4 @@
-import {ComponentFixture, fakeAsync, flushMicrotasks, TestBed, tick} from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, tick} from '@angular/core/testing';
 
 import {AsyncTestingComponent} from './async-testing.component';
 import {delay, Observable} from "rxjs";
@@ -41,39 +41,24 @@ describe('AsyncTestingComponent', () => {
       }
     )
   );
-  it('asynchronous test example - plain Promise', fakeAsync(() => {
-    let test = false;
-    console.log('Creating promise');
-    const promise = new Promise<void>(resolve => {
-      console.log('In promise');
-      setTimeout(() => {
-        test = true;
-        console.log('resolving promise');
-        resolve();
-      }, 10);
-    });
-    promise.then(() => console.log('Promise complete'));
-    flushMicrotasks()
-    tick(10)
-    console.log('Promise test');
-    expect(test).toBeTrue();
-  }));
 
-  it('asynchronous test example - Observable', fakeAsync(() => {
-      let test = false;
-      console.log('Creating observable');
-      const test$ = new Observable<void>(observer => {
-        console.log('In observable');
-        test = true;
-        console.log('Emitting observable');
-        observer.next();
-        observer.complete();
-      }).pipe(delay(10));
-      test$.subscribe(() => console.log('Observable complete'));
-      tick(10)
-      console.log('Observable test');
-      expect(test).toBeTrue();
-    }
-  ));
+  it('should resolve', fakeAsync(() => {
+      let result: unknown;
+      component.asyncFunc().then(res => {
+        result = res;
+      });
+      flush();
+      expect(result).toEqual('resolved');
+    }));
+
+
+    it('should emit', fakeAsync(() => {
+      let result: string | undefined;
+     component.observableFunc().subscribe(res => {
+        result = res;
+      });
+      flush();
+      expect(result).toEqual('resolved');
+    }));
 
 });
