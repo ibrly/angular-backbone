@@ -4,7 +4,7 @@ export const AnimationsAnimation = trigger('fadeInOut', [
   // ...
   state('in', style({
     opacity: 1,
-    fontSize: '20px'
+    fontSize: '21px'
   })),
   state('out', style({
     opacity: 0,
