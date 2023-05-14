@@ -39,6 +39,19 @@ lint:
       - node_modules
     policy: pull
 
+stylelint:
+  stage: test
+  only:
+    - merge_requests
+  script:
+    - npm run stylelint
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules
+    policy: pull
 
 test:
   image: trion/ng-cli-karma:15.1.1
