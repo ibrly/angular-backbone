@@ -3,34 +3,25 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
-  Component, DoCheck, OnChanges,
+  Component,
   OnDestroy,
-  OnInit, SimpleChanges
+  OnInit
 } from '@angular/core';
 
 @Component({
   selector: 'app-lifecycle-hooks',
   templateUrl: './lifecycle-hooks.component.html',
-  styleUrls: ['./lifecycle-hooks.component.scss']
 })
-export class LifecycleHooksComponent implements OnInit, DoCheck, OnDestroy, AfterViewInit, AfterViewChecked, AfterContentInit, AfterContentChecked, OnChanges, OnDestroy, AfterViewInit, AfterContentChecked {
+export class LifecycleHooksComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked, AfterContentInit, AfterContentChecked, OnDestroy, AfterViewInit, AfterContentChecked {
 
   constructor() {
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('ngOnChanges', changes);
-
-  }
 
   ngOnInit(): void {
     console.log('ngOnInit');
   }
 
-  ngDoCheck() {
-    console.log('ngDoCheck');
-
-  }
 
   ngAfterContentInit() {
     console.log('ngAfterContentInit');

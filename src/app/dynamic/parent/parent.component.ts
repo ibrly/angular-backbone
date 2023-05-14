@@ -1,4 +1,4 @@
-import {Component, ComponentFactoryResolver, OnInit, ViewChild} from '@angular/core';
+import {Component, ComponentFactoryResolver, ViewChild} from '@angular/core';
 import {PlaceholderDirective} from "../placeholder.directive";
 import {ModalComponent} from "../modal/modal.component";
 import {Subscription} from "rxjs";
@@ -6,9 +6,8 @@ import {Subscription} from "rxjs";
 @Component({
   selector: 'app-parent',
   templateUrl: './parent.component.html',
-  styleUrls: ['./parent.component.scss']
 })
-export class ParentComponent implements OnInit {
+export class ParentComponent {
   @ViewChild(PlaceholderDirective, {static: false}) alertHost: PlaceholderDirective;
   private closeSub: Subscription;
 
@@ -17,11 +16,8 @@ export class ParentComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
 
-  }
-
-   showErrorAlert(message: string) {
+  showErrorAlert(message: string) {
     // const alertCmp = new AlertComponent();
     const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(
       ModalComponent
@@ -32,7 +28,7 @@ export class ParentComponent implements OnInit {
     const componentRef = hostViewContainerRef.createComponent(alertCmpFactory);
 
     componentRef.instance.message = message;
-    this.closeSub = componentRef.instance.close.subscribe(() => {
+    this.closeSub = componentRef.instance.clicked.subscribe(() => {
       this.closeSub.unsubscribe();
       hostViewContainerRef.clear();
     });

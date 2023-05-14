@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 
 @Component({
@@ -6,7 +6,7 @@ import {NgForm} from "@angular/forms";
   templateUrl: './td.component.html',
   styleUrls: ['./td.component.scss']
 })
-export class TdComponent implements OnInit {
+export class TdComponent {
   @ViewChild('f') form: NgForm;
   binding: string = 'default';
   genders: Array<string> = ['Male',
@@ -33,8 +33,6 @@ export class TdComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-  }
 
   onSubmit(form: NgForm): void {
     if (form.valid) {
