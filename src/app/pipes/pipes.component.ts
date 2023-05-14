@@ -1,18 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-pipes',
   templateUrl: './pipes.component.html',
-  styleUrls: ['./pipes.component.scss']
 })
-export class PipesComponent implements OnInit {
+export class PipesComponent {
   name: string = 'Angular';
   today: Date = new Date();
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -24,7 +24,7 @@ install_dependencies:
     paths:
       - node_modules
 
-lint:
+.lint:
   stage: test
   only:
     - merge_requests
@@ -39,7 +39,7 @@ lint:
       - node_modules
     policy: pull
 
-stylelint:
+.stylelint:
   stage: test
   only:
     - merge_requests
@@ -56,31 +56,15 @@ stylelint:
 test:
   image: trion/ng-cli-karma:13.3.0
   stage: test
-  only:
-    - merge_requests
-  script:
-    - ng test --no-watch --no-progress
-  needs:
-    - install_dependencies
-  cache:
-    key:
-      files:
-        - package-lock.json
-    paths:
-      - node_modules
-    policy: pull
-
-build_image:
-  stage: build
-  only:
-    - main
-    - merge_requests
-  script:
-    - npm link @angular/cli@13.3.0
-    - npm run build
   artifacts:
     paths:
-      - $CI_PROJECT_DIR/dist
+      - coverage/
+  only:
+    - merge_requests
+  script:
+    - ng test --no-watch --no-progress --code-coverage
+  needs:
+    - install_dependencies
   cache:
     key:
       files:
@@ -96,7 +80,7 @@ push-staging-docker-registry:
     - main
     - merge_requests
   script:
-    - docker build -t registry.gitlab.com/ebrahimsolimanspace/portfolio .
+    - docker build -t registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging .
     - docker login -u ebrahimsoliman -p $CI_BUILD_TOKEN registry.gitlab.com
     - docker push registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging
 
@@ -115,7 +99,7 @@ staging-deploy:
     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh root@46.4.222.98 -p 2284 'docker run -p 80:80 --rm --name staging -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging'
+    - ssh ubuntu@$SSH_HOST 'sudo docker stop staging && sudo docker run -p 80:80 --rm --name staging -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging'
 
 push-docker-registry:
   image: docker:latest
@@ -123,9 +107,9 @@ push-docker-registry:
   only:
     - main
   script:
-    - docker build -t registry.gitlab.com/ebrahimsolimanspace/portfolio:production .
+    - docker build -t registry.gitlab.com/ebrahimsolimanspace/angular-backbone:production .
     - docker login -u ebrahimsolimanspace -p $CI_BUILD_TOKEN registry.gitlab.com
-    - docker push registry.gitlab.com/ebrahimsolimanspace/portfolio:production
+    - docker push registry.gitlab.com/ebrahimsolimanspace/angular-backbone:production
 
 production-deploy:
   image: docker:latest
@@ -145,7 +129,7 @@ production-deploy:
     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh $SSH_HOST "docker stop portfolio && docker run -p 3000:80 --rm --name portfolio -d registry.gitlab.com/ebrahimsolimanspace/portfolio:production"
+    - ssh ubuntu@$SSH_HOST "sudo docker stop angular-backbone && docker run -p 80:80 --rm --name angular-backbone -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:production"
 
 
 

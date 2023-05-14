@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {State} from "../../store/reducers";
 import {Store} from "@ngrx/store";
@@ -9,16 +9,13 @@ import {startCreateMeetup} from "../../store/reducers/meetup/meetups.actions";
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent {
   loading: boolean = false;
   error: string;
 
   constructor(private store: Store<State>) {
   }
 
-  ngOnInit(): void {
-
-  }
 
   onSubmit(form: NgForm) {
     this.loading = true;

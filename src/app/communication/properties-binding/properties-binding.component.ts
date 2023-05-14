@@ -1,16 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-properties-binding',
   templateUrl: './properties-binding.component.html',
-  styleUrls: ['./properties-binding.component.scss']
 })
-export class PropertiesBindingComponent implements OnInit {
+export class PropertiesBindingComponent {
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
 }

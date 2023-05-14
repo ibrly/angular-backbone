@@ -4,16 +4,14 @@ import {ActivatedRoute, Router} from "@angular/router";
 @Component({
   selector: 'app-viewchild',
   templateUrl: './viewchild.component.html',
-  styleUrls: ['./viewchild.component.scss']
 })
 export class ViewchildComponent implements OnInit {
   @ViewChild('vChild', {static: false}) myInput: ElementRef | undefined;
   @ViewChild('cChild', {static: false}) myContent: ElementRef | undefined;
+  dt: string | undefined;
 
   constructor(private router: Router, private route: ActivatedRoute) {
   }
-
-  dt: string | undefined;
 
   ngOnInit(): void {
     setTimeout(() => {

@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-contentchild',
   templateUrl: './contentchild.component.html',
-  styleUrls: ['./contentchild.component.scss']
 })
-export class ContentchildComponent implements OnInit {
+export class ContentchildComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

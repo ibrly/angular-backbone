@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-inline-component', //this is same as css selectors except for the id and pseudo selectors like :hover
@@ -7,12 +7,7 @@ import {Component, OnInit} from '@angular/core';
     color: red;
   }`]
 })
-export class InlineComponentComponent implements OnInit {
+export class InlineComponentComponent {
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
 }

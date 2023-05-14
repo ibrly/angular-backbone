@@ -1,14 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-data-binding',
   templateUrl: './data-binding.component.html',
   styleUrls: ['./data-binding.component.scss']
 })
-export class DataBindingComponent implements OnInit {
+export class DataBindingComponent {
 
-  constructor() {
-  }
 
   id: number = 1;
   name: string = 'John';
@@ -17,8 +15,5 @@ export class DataBindingComponent implements OnInit {
     return this.name;
   }
 
-
-  ngOnInit(): void {
-  }
 
 }
