@@ -59,28 +59,9 @@ test:
   only:
     - merge_requests
   script:
-    - ng test --no-watch --no-progress
+    - ng test --no-watch --no-progress --code-coverage
   needs:
     - install_dependencies
-  cache:
-    key:
-      files:
-        - package-lock.json
-    paths:
-      - node_modules
-    policy: pull
-
-build_image:
-  stage: build
-  only:
-    - main
-    - merge_requests
-  script:
-    - npm link @angular/cli@15.1.1
-    - npm run build
-  artifacts:
-    paths:
-      - $CI_PROJECT_DIR/dist
   cache:
     key:
       files:
@@ -115,7 +96,7 @@ staging-deploy:
     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh ubuntu@$SSH_HOST 'sudo docker run -p 80:80 --rm --name staging -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging'
+    - ssh ubuntu@$SSH_HOST 'sudo docker stop staging && sudo docker run -p 80:80 --rm --name staging -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging'
 
 push-docker-registry:
   image: docker:latest
