@@ -96,7 +96,7 @@ push-staging-docker-registry:
     - main
     - merge_requests
   script:
-    - docker build -t registry.gitlab.com/ebrahimsolimanspace/portfolio .
+    - docker build -t registry.gitlab.com/ebrahimsolimanspace/angular-backbone .
     - docker login -u ebrahimsoliman -p $CI_BUILD_TOKEN registry.gitlab.com
     - docker push registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging
 
@@ -123,9 +123,9 @@ push-docker-registry:
   only:
     - main
   script:
-    - docker build -t registry.gitlab.com/ebrahimsolimanspace/portfolio:production .
+    - docker build -t registry.gitlab.com/ebrahimsolimanspace/angular-backbone:production .
     - docker login -u ebrahimsolimanspace -p $CI_BUILD_TOKEN registry.gitlab.com
-    - docker push registry.gitlab.com/ebrahimsolimanspace/portfolio:production
+    - docker push registry.gitlab.com/ebrahimsolimanspace/angular-backbone:production
 
 production-deploy:
   image: docker:latest
@@ -145,7 +145,7 @@ production-deploy:
     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh $SSH_HOST "docker stop portfolio && docker run -p 3000:80 --rm --name portfolio -d registry.gitlab.com/ebrahimsolimanspace/portfolio:production"
+    - ssh $SSH_HOST "docker stop angular-backbone && docker run -p 3000:80 --rm --name angular-backbone -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:production"
 
 
 
