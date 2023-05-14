@@ -10,7 +10,9 @@
     "dev:ssr": "ng run angular-backbone:serve-ssr",
     "serve:ssr": "node dist/angular-backbone/server/main.js",
     "build:ssr": "ng build && ng run angular-backbone:server",
-    "prerender": "ng run angular-backbone:prerender"
+    "prerender": "ng run angular-backbone:prerender",
+    "stylelint": "npx stylelint \"src/**/*.scss\"\n",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -53,6 +55,17 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.6.2"
+    "typescript": "~4.6.2",
+    "stylelint": "^14.16.1",
+    "stylelint-config-standard": "^29.0.0",
+    "stylelint-scss": "^4.3.0",
+    "@angular-eslint/builder": "13.3.0",
+    "@angular-eslint/eslint-plugin": "13.3.0",
+    "@angular-eslint/eslint-plugin-template": "13.3.0",
+    "@angular-eslint/schematics": "13.3.0",
+    "@angular-eslint/template-parser": "13.3.0",
+    "@typescript-eslint/eslint-plugin": "5.48.1",
+    "@typescript-eslint/parser": "5.48.1",
+    "eslint": "^8.31.0"
   }
 }
