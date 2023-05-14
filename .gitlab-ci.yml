@@ -110,6 +110,10 @@ staging-deploy:
     - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
   script:
     - ssh $SSH_HOST 'docker run -p 80:80 --rm --name staging -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging'
 
@@ -141,7 +145,7 @@ production-deploy:
     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh $SSH_HOST "docker stop angular-backbone && docker run -p 3000:80 --rm --name angular-backbone -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:production"
+    - ssh ubuntu@$SSH_HOST "docker stop angular-backbone && docker run -p 3000:80 --rm --name angular-backbone -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:production"
 
 
 
