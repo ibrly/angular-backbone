@@ -115,7 +115,7 @@ staging-deploy:
     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh ubuntu@$SSH_HOST 'docker run -p 80:80 --rm --name staging -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging'
+    - ssh ubuntu@$SSH_HOST 'sudo docker run -p 80:80 --rm --name staging -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging'
 
 push-docker-registry:
   image: docker:latest
@@ -145,7 +145,7 @@ production-deploy:
     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh ubuntu@$SSH_HOST "docker stop angular-backbone && docker run -p 3000:80 --rm --name angular-backbone -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:production"
+    - ssh ubuntu@$SSH_HOST "sudo docker stop angular-backbone && docker run -p 80:80 --rm --name angular-backbone -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:production"
 
 
 
