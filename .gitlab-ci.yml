@@ -24,7 +24,7 @@ install_dependencies:
     paths:
       - node_modules
 
-lint:
+.lint:
   stage: test
   only:
     - merge_requests
@@ -39,7 +39,7 @@ lint:
       - node_modules
     policy: pull
 
-stylelint:
+.stylelint:
   stage: test
   only:
     - merge_requests
