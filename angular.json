@@ -168,6 +168,15 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
@@ -175,6 +184,6 @@
   "defaultProject": "angular-backbone",
   "cli": {
     "analytics": "fcdcb731-7f39-47d0-a53e-a30c20367fe3",
-    "defaultCollection": "@ngrx/schematics"
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }
