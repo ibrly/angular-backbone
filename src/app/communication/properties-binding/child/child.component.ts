@@ -5,7 +5,7 @@ import {Component, Input} from '@angular/core';
   templateUrl: './child.component.html',
 })
 export class ChildComponent {
-  @Input('name') name: string | undefined;
+  @Input() name: string | undefined;
 
 
 }
