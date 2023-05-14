@@ -1,15 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import { of} from "rxjs";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-async-testing',
   templateUrl: './async-testing.component.html',
-  styleUrls: ['./async-testing.component.scss']
 })
 export class AsyncTestingComponent implements OnInit {
   showAsyncComponent = false;
   showSyncComponent = false;
-
 
 
   ngOnInit(): void {
@@ -20,14 +18,16 @@ export class AsyncTestingComponent implements OnInit {
     this.showSyncComponent = true;
 
   }
-   asyncFunc() {
+
+  asyncFunc() {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve('resolved');
       }, 1000);
     });
   }
-   observableFunc() {
+
+  observableFunc() {
     return of('resolved');
   }
 }
