@@ -56,6 +56,9 @@ install_dependencies:
 test:
   image: trion/ng-cli-karma:13.3.0
   stage: test
+  artifacts:
+    paths:
+      - coverage/
   only:
     - merge_requests
   script:
