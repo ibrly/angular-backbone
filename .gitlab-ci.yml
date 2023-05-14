@@ -96,7 +96,7 @@ push-staging-docker-registry:
     - main
     - merge_requests
   script:
-    - docker build -t registry.gitlab.com/ebrahimsolimanspace/angular-backbone .
+    - docker build -t registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging .
     - docker login -u ebrahimsoliman -p $CI_BUILD_TOKEN registry.gitlab.com
     - docker push registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging
 
