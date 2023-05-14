@@ -115,7 +115,7 @@ staging-deploy:
     - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh root@46.4.222.98 -p 2284 'docker run -p 80:80 --rm --name staging -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging'
+    - ssh $SSH_HOST 'docker run -p 80:80 --rm --name staging -d registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging'
 
 push-docker-registry:
   image: docker:latest
