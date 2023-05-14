@@ -77,7 +77,7 @@ push-staging-docker-registry:
   image: docker:latest
   stage: publish
   only:
-    - main
+    - master
     - merge_requests
   script:
     - docker build -t registry.gitlab.com/ebrahimsolimanspace/angular-backbone:staging .
@@ -105,7 +105,7 @@ push-docker-registry:
   image: docker:latest
   stage: publish
   only:
-    - main
+    - master
   script:
     - docker build -t registry.gitlab.com/ebrahimsolimanspace/angular-backbone:production .
     - docker login -u ebrahimsolimanspace -p $CI_BUILD_TOKEN registry.gitlab.com
