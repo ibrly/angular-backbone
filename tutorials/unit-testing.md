@@ -1,10 +1,6 @@
-# AngularBackbone
+# Unit testing in Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
-
-This project is designed and developed to be a reference for Software Developers who wants to learn Angular 
-
-# Unit testing
+A guided tour of the specs in this repo. Run them with `npm test`, or `npx ng test --watch=false --browsers=ChromeHeadlessCI` for a single headless run.
 
 ## Basics
 [you can find implementations below in this file](../src/app/basics/data-binding/data-binding.component.spec.ts)
