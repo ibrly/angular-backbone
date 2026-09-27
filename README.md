@@ -1,5 +1,7 @@
 # AngularBackbone
 
+[![CI](https://github.com/ibrly/angular-backbone/actions/workflows/ci.yml/badge.svg)](https://github.com/ibrly/angular-backbone/actions/workflows/ci.yml)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
 
 This project is designed and developed to be a reference for Software Developers who wants to learn Angular 
