@@ -37,7 +37,7 @@ export const reducer = createReducer(initialState,
   ), on(retrieveMeetupsFail, (state, payload) => {
       return {
         ...state
-        , error: [...payload.error]
+        , error: payload.error
       }
     }
   ), on(retrieveMeetupSuccess, (state, payload) => {
@@ -49,7 +49,7 @@ export const reducer = createReducer(initialState,
   ), on(retrieveMeetupFail, (state, payload) => {
       return {
         ...state
-        , error: [...payload.error]
+        , error: payload.error
       }
     }
   ), on(updateMeetupSuccess, (state, payload) => {
@@ -61,7 +61,7 @@ export const reducer = createReducer(initialState,
   ), on(updateMeetupFail, (state, payload) => {
       return {
         ...state
-        , error: [...payload.error]
+        , error: payload.error
       }
     }
   ), on(createMeetupSuccess, (state, payload) => {
@@ -73,7 +73,7 @@ export const reducer = createReducer(initialState,
   ), on(createMeetupFail, (state, payload) => {
       return {
         ...state
-        , error: [...payload.error]
+        , error: payload.error
       }
     }
   ), on(deleteMeetupSuccess, (state, payload) => {
@@ -85,7 +85,7 @@ export const reducer = createReducer(initialState,
   ), on(deleteMeetupFail, (state, payload) => {
       return {
         ...state,
-        error: [...payload.error]
+        error: payload.error
       }
     }
   ));
