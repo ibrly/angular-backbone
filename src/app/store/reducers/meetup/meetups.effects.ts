@@ -48,19 +48,18 @@ export class MeetupsEffects {
     ofType(startCreateMeetup),
     switchMap((data) => {
       return this.http.post<any>(`http://localhost:1350/api/meetups/`, {data: data.meetup})
-        .pipe(map(responseData => {
-            return deleteMeetupSuccess({meetups: responseData['data']});
-          }),
-          catchError((error) => {
-            return of(retrieveMeetupFail({error: error}));
-          }),
+        .pipe(
+          // Reload the list only once the create succeeded; a failed POST must reach the store.
           switchMap(() => {
             return this.http.get<any>('http://localhost:1350/api/meetups')
               .pipe(map(responseData => {
                 return retrieveMeetupsSuccess({meetups: responseData['data']});
               }), catchError((error) => {
-                return of(createMeetupFail({error: error}));
+                return of(retrieveMeetupsFail({error: error}));
               }))
+          }),
+          catchError((error) => {
+            return of(createMeetupFail({error: error}));
           }))
     })
   ));
