@@ -18,6 +18,7 @@ import {
 } from "./meetups.actions";
 import {catchError, map, of, switchMap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../../environments/environment";
 
 
 @Injectable()
@@ -25,7 +26,7 @@ export class MeetupsEffects {
   retrieveMeetups$ = createEffect(() => this.actions$.pipe(
     ofType(startRetrieveMeetups),
     switchMap(() => {
-      return this.http.get<any>('http://localhost:1350/api/meetups')
+      return this.http.get<any>(`${environment.apiUrl}/meetups`)
         .pipe(map(responseData => {
           return retrieveMeetupsSuccess({meetups: responseData['data']});
         }), catchError((error) => {
@@ -36,7 +37,7 @@ export class MeetupsEffects {
   retrieveMeetup$ = createEffect(() => this.actions$.pipe(
     ofType(startRetrieveMeetup),
     switchMap((data) => {
-      return this.http.get<any>(`http://localhost:1350/api/meetups/${data.meetupId}`)
+      return this.http.get<any>(`${environment.apiUrl}/meetups/${data.meetupId}`)
         .pipe(map(responseData => {
           return retrieveMeetupSuccess({meetup: responseData['data']});
         }), catchError((error) => {
@@ -47,11 +48,11 @@ export class MeetupsEffects {
   createMeetup$ = createEffect(() => this.actions$.pipe(
     ofType(startCreateMeetup),
     switchMap((data) => {
-      return this.http.post<any>(`http://localhost:1350/api/meetups/`, {data: data.meetup})
+      return this.http.post<any>(`${environment.apiUrl}/meetups/`, {data: data.meetup})
         .pipe(
           // Reload the list only once the create succeeded; a failed POST must reach the store.
           switchMap(() => {
-            return this.http.get<any>('http://localhost:1350/api/meetups')
+            return this.http.get<any>(`${environment.apiUrl}/meetups`)
               .pipe(map(responseData => {
                 return retrieveMeetupsSuccess({meetups: responseData['data']});
               }), catchError((error) => {
@@ -66,7 +67,7 @@ export class MeetupsEffects {
   updateMeetup$ = createEffect(() => this.actions$.pipe(
     ofType(startUpdateMeetup),
     switchMap((data) => {
-      return this.http.put<any>(`http://localhost:1350/api/meetups/${data.meetup.id}`, {data: data.meetup.attributes})
+      return this.http.put<any>(`${environment.apiUrl}/meetups/${data.meetup.id}`, {data: data.meetup.attributes})
         .pipe(map(responseData => {
             return updateMeetupSuccess({meetup: responseData['data']});
           }),
@@ -78,11 +79,11 @@ export class MeetupsEffects {
   deleteMeetup$ = createEffect(() => this.actions$.pipe(
     ofType(startDeleteMeetup),
     switchMap((data) => {
-      return this.http.delete<any>(`http://localhost:1350/api/meetups/${data.meetupId}`)
+      return this.http.delete<any>(`${environment.apiUrl}/meetups/${data.meetupId}`)
         .pipe(
           // Same as create: reload after a successful delete, and let a failed DELETE reach the store.
           switchMap(() => {
-            return this.http.get<any>('http://localhost:1350/api/meetups')
+            return this.http.get<any>(`${environment.apiUrl}/meetups`)
               .pipe(map(responseData => {
                 return retrieveMeetupsSuccess({meetups: responseData['data']});
               }), catchError((error) => {

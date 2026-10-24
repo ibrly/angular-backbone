@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // Strapi backend the meetups store and services call
+  apiUrl: 'http://localhost:1350/api'
 };
 
 /*
