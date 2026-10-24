@@ -5,7 +5,13 @@ import {Observable, of} from 'rxjs';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 import {MeetupsEffects} from './meetups.effects';
-import {createMeetupFail, retrieveMeetupsSuccess, startCreateMeetup} from './meetups.actions';
+import {
+  createMeetupFail,
+  deleteMeetupFail,
+  retrieveMeetupsSuccess,
+  startCreateMeetup,
+  startDeleteMeetup
+} from './meetups.actions';
 
 const API = 'http://localhost:1350/api/meetups';
 
@@ -55,6 +61,31 @@ describe('MeetupsEffects', () => {
 
       expect(emitted.length).toBe(1);
       expect(emitted[0].type).toBe(createMeetupFail.type);
+    });
+  });
+
+  describe('deleteMeetup$', () => {
+    it('reloads the list after a successful delete', () => {
+      const emitted: Action[] = [];
+      actions$ = of(startDeleteMeetup({meetupId: 3}));
+      effects.deleteMeetup$.subscribe(action => emitted.push(action));
+
+      http.expectOne({method: 'DELETE', url: `${API}/3`}).flush({data: {id: 3}});
+      http.expectOne({method: 'GET', url: API}).flush({data: []});
+
+      expect(emitted).toEqual([retrieveMeetupsSuccess({meetups: []})]);
+    });
+
+    it('reports a failed delete as deleteMeetupFail and does not reload', () => {
+      const emitted: Action[] = [];
+      actions$ = of(startDeleteMeetup({meetupId: 3}));
+      effects.deleteMeetup$.subscribe(action => emitted.push(action));
+
+      http.expectOne({method: 'DELETE', url: `${API}/3`}).flush(null, {status: 404, statusText: 'Not Found'});
+      http.expectNone(API);
+
+      expect(emitted.length).toBe(1);
+      expect(emitted[0].type).toBe(deleteMeetupFail.type);
     });
   });
 });

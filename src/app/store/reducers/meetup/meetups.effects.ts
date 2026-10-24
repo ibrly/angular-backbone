@@ -3,7 +3,6 @@ import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {
   createMeetupFail,
   deleteMeetupFail,
-  deleteMeetupSuccess,
   retrieveMeetupFail,
   retrieveMeetupsFail,
   retrieveMeetupsSuccess,
@@ -79,18 +78,19 @@ export class MeetupsEffects {
     ofType(startDeleteMeetup),
     switchMap((data) => {
       return this.http.delete<any>(`http://localhost:1350/api/meetups/${data.meetupId}`)
-        .pipe(map(responseData => {
-          return deleteMeetupSuccess({meetups: responseData['data']});
-        }), catchError((error) => {
-          return of(deleteMeetupFail({error: error}));
-        }), switchMap(() => {
-          return this.http.get<any>('http://localhost:1350/api/meetups')
-            .pipe(map(responseData => {
-              return retrieveMeetupsSuccess({meetups: responseData['data']});
-            }), catchError((error) => {
-              return of(retrieveMeetupsFail({error: error}));
-            }))
-        }))
+        .pipe(
+          // Same as create: reload after a successful delete, and let a failed DELETE reach the store.
+          switchMap(() => {
+            return this.http.get<any>('http://localhost:1350/api/meetups')
+              .pipe(map(responseData => {
+                return retrieveMeetupsSuccess({meetups: responseData['data']});
+              }), catchError((error) => {
+                return of(retrieveMeetupsFail({error: error}));
+              }))
+          }),
+          catchError((error) => {
+            return of(deleteMeetupFail({error: error}));
+          }))
     })
   ));
 
