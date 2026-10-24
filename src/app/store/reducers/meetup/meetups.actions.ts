@@ -1,6 +1,17 @@
 import {createAction, props} from '@ngrx/store';
 import {Meetup} from "../../../http/models/Meetup";
 
+/** What the store keeps from a failed request: plain data, so the state stays serializable. */
+export interface MeetupsError {
+  status: number;
+  message: string;
+}
+
+export const toMeetupsError = (error: any): MeetupsError => ({
+  status: error?.status ?? 0,
+  message: error?.message ?? String(error)
+});
+
 export const startRetrieveMeetups = createAction(
   '[Meetups] Start Retrieve Meetups'
 );
@@ -10,7 +21,7 @@ export const retrieveMeetupsSuccess = createAction(
 );
 export const retrieveMeetupsFail = createAction(
   '[Meetups] Retrieve Meetups Fail'
-  , props<{ error: any }>()
+  , props<{ error: MeetupsError }>()
 );
 export const startRetrieveMeetup = createAction(
   '[Meetups] Start Retrieve Meetup',
@@ -22,7 +33,7 @@ export const retrieveMeetupSuccess = createAction(
 );
 export const retrieveMeetupFail = createAction(
   '[Meetups] Retrieve Meetup Fail'
-  , props<{ error: any }>()
+  , props<{ error: MeetupsError }>()
 );
 export const startCreateMeetup = createAction(
   '[Meetups] Start Create Meetup',
@@ -34,7 +45,7 @@ export const createMeetupSuccess = createAction(
 );
 export const createMeetupFail = createAction(
   '[Meetups] Create Meetup Fail'
-  , props<{ error: any }>()
+  , props<{ error: MeetupsError }>()
 );
 export const startUpdateMeetup = createAction(
   '[Meetups] Start Update Meetup',
@@ -46,7 +57,7 @@ export const updateMeetupSuccess = createAction(
 );
 export const updateMeetupFail = createAction(
   '[Meetups] Update Meetup Fail'
-  , props<{ error: any }>()
+  , props<{ error: MeetupsError }>()
 );
 export const startDeleteMeetup = createAction(
   '[Meetups] Start Delete Meetup',
@@ -58,5 +69,5 @@ export const deleteMeetupSuccess = createAction(
 );
 export const deleteMeetupFail = createAction(
   '[Meetups] Delete Meetup Fail'
-  , props<{ error: any }>()
+  , props<{ error: MeetupsError }>()
 );

@@ -9,6 +9,7 @@ import {
   retrieveMeetupsSuccess,
   retrieveMeetupSuccess,
   updateMeetupFail,
+  MeetupsError,
   updateMeetupSuccess
 } from "./meetups.actions";
 import {Meetup} from "../../../http/models/Meetup";
@@ -18,7 +19,7 @@ import {Meetup} from "../../../http/models/Meetup";
 export interface MeetupsState {
   meetups: Array<Meetup>;
   meetup?: Meetup;
-  error: any;
+  error: MeetupsError | null;
 }
 
 export const initialState: MeetupsState = {

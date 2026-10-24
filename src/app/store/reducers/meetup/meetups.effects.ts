@@ -12,6 +12,7 @@ import {
   startRetrieveMeetup,
   startRetrieveMeetups,
   startUpdateMeetup,
+  toMeetupsError,
   updateMeetupFail,
   updateMeetupSuccess
 } from "./meetups.actions";
@@ -28,7 +29,7 @@ export class MeetupsEffects {
         .pipe(map(responseData => {
           return retrieveMeetupsSuccess({meetups: responseData['data']});
         }), catchError((error) => {
-          return of(retrieveMeetupsFail({error: error}));
+          return of(retrieveMeetupsFail({error: toMeetupsError(error)}));
         }))
     })
   ));
@@ -39,7 +40,7 @@ export class MeetupsEffects {
         .pipe(map(responseData => {
           return retrieveMeetupSuccess({meetup: responseData['data']});
         }), catchError((error) => {
-          return of(retrieveMeetupFail({error: error}));
+          return of(retrieveMeetupFail({error: toMeetupsError(error)}));
         }))
     })
   ));
@@ -54,11 +55,11 @@ export class MeetupsEffects {
               .pipe(map(responseData => {
                 return retrieveMeetupsSuccess({meetups: responseData['data']});
               }), catchError((error) => {
-                return of(retrieveMeetupsFail({error: error}));
+                return of(retrieveMeetupsFail({error: toMeetupsError(error)}));
               }))
           }),
           catchError((error) => {
-            return of(createMeetupFail({error: error}));
+            return of(createMeetupFail({error: toMeetupsError(error)}));
           }))
     })
   ));
@@ -70,7 +71,7 @@ export class MeetupsEffects {
             return updateMeetupSuccess({meetup: responseData['data']});
           }),
           catchError((error) => {
-            return of(updateMeetupFail({error: error}));
+            return of(updateMeetupFail({error: toMeetupsError(error)}));
           }))
     })
   ));
@@ -85,11 +86,11 @@ export class MeetupsEffects {
               .pipe(map(responseData => {
                 return retrieveMeetupsSuccess({meetups: responseData['data']});
               }), catchError((error) => {
-                return of(retrieveMeetupsFail({error: error}));
+                return of(retrieveMeetupsFail({error: toMeetupsError(error)}));
               }))
           }),
           catchError((error) => {
-            return of(deleteMeetupFail({error: error}));
+            return of(deleteMeetupFail({error: toMeetupsError(error)}));
           }))
     })
   ));

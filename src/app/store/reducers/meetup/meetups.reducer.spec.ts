@@ -9,6 +9,7 @@ import {
   retrieveMeetupsFail,
   retrieveMeetupsSuccess,
   retrieveMeetupSuccess,
+  toMeetupsError,
   updateMeetupFail
 } from './meetups.actions';
 import {initialState, reducer} from './meetups.reducer';
@@ -38,8 +39,8 @@ describe('meetups reducer', () => {
     expect(reducer(state, deleteMeetupSuccess({meetups: [meetup(2)]})).meetups.map(m => m.id)).toEqual([2]);
   });
 
-  // The effects dispatch the HttpClient error itself, which is an object, not an array.
-  const httpError = new HttpErrorResponse({status: 500, statusText: 'Server Error', url: '/api/meetups'});
+  // The effects turn the HttpErrorResponse into plain data before dispatching it.
+  const httpError = toMeetupsError(new HttpErrorResponse({status: 500, statusText: 'Server Error', url: '/api/meetups'}));
   const failActions = [
     retrieveMeetupsFail({error: httpError}),
     retrieveMeetupFail({error: httpError}),
@@ -49,9 +50,9 @@ describe('meetups reducer', () => {
   ];
 
   failActions.forEach(action => {
-    it(`keeps the HttpErrorResponse on ${action.type}`, () => {
+    it(`keeps the error on ${action.type}`, () => {
       const state = reducer(initialState, action);
-      expect(state.error).toBe(httpError);
+      expect(state.error).toEqual({status: 500, message: 'Http failure response for /api/meetups: 500 Server Error'});
       expect(state.meetups).toEqual([]);
     });
   });

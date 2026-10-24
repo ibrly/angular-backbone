@@ -59,8 +59,9 @@ describe('MeetupsEffects', () => {
       http.expectOne({method: 'POST', url: `${API}/`}).flush(null, {status: 400, statusText: 'Bad Request'});
       http.expectNone(API);
 
-      expect(emitted.length).toBe(1);
-      expect(emitted[0].type).toBe(createMeetupFail.type);
+      expect(emitted).toEqual([createMeetupFail({
+        error: {status: 400, message: `Http failure response for ${API}/: 400 Bad Request`}
+      })]);
     });
   });
 
